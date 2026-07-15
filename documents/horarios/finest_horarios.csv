@@ -1,0 +1,38 @@
+programa,semestre,rama,grupo,dia,modalidad,hora_inicio,hora_fin,materia,tipo,profesor
+FINEST,1,Común,A,Lunes,Presencial,18:00,19:20,Back-end,Clase,M. Perez
+FINEST,1,Común,A,Lunes,Presencial,19:30,20:50,Back-end,Clase,M. Perez
+FINEST,1,Común,A,Lunes,Presencial,21:00,22:20,Inglés,Clase,S. Soza
+FINEST,1,Común,A,Martes,Virtual,18:00,19:20,Front-end,Clase,M. Perez
+FINEST,1,Común,A,Martes,Virtual,19:30,20:10,Inglés,Clase,S. Soza
+FINEST,1,Común,A,Martes,Virtual,20:10,20:50,Back-end,Clase,M. Perez
+FINEST,1,Común,A,Martes,Virtual,21:00,22:20,Front-end,Clase,M. Perez
+FINEST,1,Común,A,Miércoles,Virtual,18:00,19:20,Lengua oral y escrita,Clase,F. Lopez
+FINEST,1,Común,A,Miércoles,Virtual,19:30,20:10,Filosofía,Clase,D. Gaona
+FINEST,1,Común,A,Miércoles,Virtual,20:10,20:50,Front-end,Clase,M. Perez
+FINEST,1,Común,A,Miércoles,Virtual,21:00,22:20,Front-end,Clase,M. Perez
+FINEST,1,Común,A,Jueves,Presencial,18:00,19:20,Desarrollo personal,Clase,Tutoras sociales
+FINEST,1,Común,A,Jueves,Presencial,19:30,20:10,Dupla Matemática - Front-end,Dupla,M. Perez & J. Medina
+FINEST,1,Común,A,Jueves,Presencial,20:10,20:50,Matemática,Clase,J. Medina
+FINEST,1,Común,A,Jueves,Presencial,21:00,21:40,Dupla Filosofía - Lengua oral y escrita,Dupla,D. Gaona & F. Lopez
+FINEST,1,Común,A,Jueves,Presencial,21:40,22:20,Filosofía,Clase,D. Gaona
+FINEST,1,Común,A,Viernes,Virtual,18:00,19:20,Back-end,Clase,M. Perez
+FINEST,1,Común,A,Viernes,Virtual,19:30,20:50,Back-end,Clase,M. Perez
+FINEST,1,Común,A,Viernes,Virtual,21:00,22:20,Matemática,Clase,J. Medina
+FINEST,1,Común,B,Lunes,Presencial,18:00,19:20,Front-end,Clase,M. Perez
+FINEST,1,Común,B,Lunes,Presencial,19:30,20:50,Front-end,Clase,M. Perez
+FINEST,1,Común,B,Lunes,Presencial,21:00,22:20,Matemática,Clase,J. Medina
+FINEST,1,Común,B,Martes,Virtual,18:00,19:20,Back-end,Clase,R. Pereyra
+FINEST,1,Común,B,Martes,Virtual,19:30,20:50,Back-end,Clase,R. Pereyra
+FINEST,1,Común,B,Martes,Virtual,21:00,22:20,Inglés,Clase,S. Soza
+FINEST,1,Común,B,Miércoles,Virtual,18:00,19:20,Front-end,Clase,M. Perez
+FINEST,1,Común,B,Miércoles,Virtual,19:30,20:10,Front-end,Clase,M. Perez
+FINEST,1,Común,B,Miércoles,Virtual,20:10,20:50,Matemática,Clase,J. Medina
+FINEST,1,Común,B,Miércoles,Virtual,21:00,22:20,Back-end,Clase,R. Pereyra
+FINEST,1,Común,B,Jueves,Presencial,18:00,19:20,Desarrollo personal,Clase,Tutoras sociales
+FINEST,1,Común,B,Jueves,Presencial,19:30,20:10,Dupla Matemática - Back-end,Dupla,R. Pereyra & J. Medina
+FINEST,1,Común,B,Jueves,Presencial,20:10,20:50,Inglés,Clase,S. Soza
+FINEST,1,Común,B,Jueves,Presencial,21:00,21:40,Dupla Filosofía - Lengua oral y escrita,Dupla,D. Gaona & F. Lopez
+FINEST,1,Común,B,Jueves,Presencial,21:40,22:20,Lengua oral y escrita,Clase,F. Lopez
+FINEST,1,Común,B,Viernes,Virtual,18:00,19:20,Filosofía,Clase,D. Gaona
+FINEST,1,Común,B,Viernes,Virtual,19:30,20:50,Back-end,Clase,R. Pereyra
+FINEST,1,Común,B,Viernes,Virtual,21:00,22:20,Front-end,Clase,M. Perez

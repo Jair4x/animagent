@@ -1,0 +1,181 @@
+programa,año,rama,grupo,dia,modalidad,hora_inicio,hora_fin,materia,profesor
+Bachillerato,1,TIC,A,Lunes,Presencial,08:00,09:20,Matemática,R. Fernández
+Bachillerato,1,TIC,A,Lunes,Presencial,09:30,11:30,Programación I,L. Torres
+Bachillerato,1,TIC,A,Lunes,Presencial,11:50,13:20,Inglés Técnico,P. Suárez
+Bachillerato,1,TIC,A,Martes,Presencial,08:00,09:20,Lengua y Literatura,C. Méndez
+Bachillerato,1,TIC,A,Martes,Presencial,09:30,11:30,Redes e Infraestructura,D. Ríos
+Bachillerato,1,TIC,A,Martes,Presencial,11:50,13:20,Matemática,R. Fernández
+Bachillerato,1,TIC,A,Miércoles,Presencial,08:00,09:20,Programación I,L. Torres
+Bachillerato,1,TIC,A,Miércoles,Presencial,09:30,11:30,Ciudadanía y Trabajo,A. Gómez
+Bachillerato,1,TIC,A,Miércoles,Presencial,11:50,13:20,Inglés Técnico,P. Suárez
+Bachillerato,1,TIC,A,Jueves,Presencial,08:00,09:20,Redes e Infraestructura,D. Ríos
+Bachillerato,1,TIC,A,Jueves,Presencial,09:30,11:30,Matemática,R. Fernández
+Bachillerato,1,TIC,A,Jueves,Presencial,11:50,13:20,Programación I,L. Torres
+Bachillerato,1,TIC,A,Viernes,Presencial,08:00,09:20,Lengua y Literatura,C. Méndez
+Bachillerato,1,TIC,A,Viernes,Presencial,09:30,11:30,Ciudadanía y Trabajo,A. Gómez
+Bachillerato,1,TIC,A,Viernes,Presencial,11:50,13:20,Redes e Infraestructura,D. Ríos
+Bachillerato,1,TIC,B,Lunes,Presencial,08:00,09:20,Inglés Técnico,P. Suárez
+Bachillerato,1,TIC,B,Lunes,Presencial,09:30,11:30,Matemática,R. Fernández
+Bachillerato,1,TIC,B,Lunes,Presencial,11:50,13:20,Redes e Infraestructura,D. Ríos
+Bachillerato,1,TIC,B,Martes,Presencial,08:00,09:20,Programación I,K. Ibáñez
+Bachillerato,1,TIC,B,Martes,Presencial,09:30,11:30,Lengua y Literatura,C. Méndez
+Bachillerato,1,TIC,B,Martes,Presencial,11:50,13:20,Matemática,R. Fernández
+Bachillerato,1,TIC,B,Miércoles,Presencial,08:00,09:20,Ciudadanía y Trabajo,A. Gómez
+Bachillerato,1,TIC,B,Miércoles,Presencial,09:30,11:30,Programación I,K. Ibáñez
+Bachillerato,1,TIC,B,Miércoles,Presencial,11:50,13:20,Inglés Técnico,P. Suárez
+Bachillerato,1,TIC,B,Jueves,Presencial,08:00,09:20,Matemática,R. Fernández
+Bachillerato,1,TIC,B,Jueves,Presencial,09:30,11:30,Redes e Infraestructura,D. Ríos
+Bachillerato,1,TIC,B,Jueves,Presencial,11:50,13:20,Ciudadanía y Trabajo,A. Gómez
+Bachillerato,1,TIC,B,Viernes,Presencial,08:00,09:20,Programación I,K. Ibáñez
+Bachillerato,1,TIC,B,Viernes,Presencial,09:30,11:30,Lengua y Literatura,C. Méndez
+Bachillerato,1,TIC,B,Viernes,Presencial,11:50,13:20,Redes e Infraestructura,D. Ríos
+Bachillerato,1,Administración,A,Lunes,Presencial,08:00,09:20,Matemática Financiera,R. Fernández
+Bachillerato,1,Administración,A,Lunes,Presencial,09:30,11:30,Contabilidad I,V. Herrera
+Bachillerato,1,Administración,A,Lunes,Presencial,11:50,13:20,Inglés de Negocios,P. Suárez
+Bachillerato,1,Administración,A,Martes,Presencial,08:00,09:20,Lengua y Literatura,C. Méndez
+Bachillerato,1,Administración,A,Martes,Presencial,09:30,11:30,Administración General,B. Castro
+Bachillerato,1,Administración,A,Martes,Presencial,11:50,13:20,Matemática Financiera,R. Fernández
+Bachillerato,1,Administración,A,Miércoles,Presencial,08:00,09:20,Contabilidad I,V. Herrera
+Bachillerato,1,Administración,A,Miércoles,Presencial,09:30,11:30,Ciudadanía y Trabajo,A. Gómez
+Bachillerato,1,Administración,A,Miércoles,Presencial,11:50,13:20,Inglés de Negocios,P. Suárez
+Bachillerato,1,Administración,A,Jueves,Presencial,08:00,09:20,Administración General,B. Castro
+Bachillerato,1,Administración,A,Jueves,Presencial,09:30,11:30,Matemática Financiera,R. Fernández
+Bachillerato,1,Administración,A,Jueves,Presencial,11:50,13:20,Contabilidad I,V. Herrera
+Bachillerato,1,Administración,A,Viernes,Presencial,08:00,09:20,Lengua y Literatura,C. Méndez
+Bachillerato,1,Administración,A,Viernes,Presencial,09:30,11:30,Ciudadanía y Trabajo,A. Gómez
+Bachillerato,1,Administración,A,Viernes,Presencial,11:50,13:20,Administración General,B. Castro
+Bachillerato,1,Administración,B,Lunes,Presencial,08:00,09:20,Inglés de Negocios,P. Suárez
+Bachillerato,1,Administración,B,Lunes,Presencial,09:30,11:30,Matemática Financiera,R. Fernández
+Bachillerato,1,Administración,B,Lunes,Presencial,11:50,13:20,Administración General,E. Soria
+Bachillerato,1,Administración,B,Martes,Presencial,08:00,09:20,Contabilidad I,V. Herrera
+Bachillerato,1,Administración,B,Martes,Presencial,09:30,11:30,Lengua y Literatura,C. Méndez
+Bachillerato,1,Administración,B,Martes,Presencial,11:50,13:20,Matemática Financiera,R. Fernández
+Bachillerato,1,Administración,B,Miércoles,Presencial,08:00,09:20,Administración General,E. Soria
+Bachillerato,1,Administración,B,Miércoles,Presencial,09:30,11:30,Ciudadanía y Trabajo,A. Gómez
+Bachillerato,1,Administración,B,Miércoles,Presencial,11:50,13:20,Contabilidad I,V. Herrera
+Bachillerato,1,Administración,B,Jueves,Presencial,08:00,09:20,Matemática Financiera,R. Fernández
+Bachillerato,1,Administración,B,Jueves,Presencial,09:30,11:30,Administración General,E. Soria
+Bachillerato,1,Administración,B,Jueves,Presencial,11:50,13:20,Inglés de Negocios,P. Suárez
+Bachillerato,1,Administración,B,Viernes,Presencial,08:00,09:20,Ciudadanía y Trabajo,A. Gómez
+Bachillerato,1,Administración,B,Viernes,Presencial,09:30,11:30,Contabilidad I,V. Herrera
+Bachillerato,1,Administración,B,Viernes,Presencial,11:50,13:20,Lengua y Literatura,C. Méndez
+Bachillerato,2,TIC,A,Lunes,Presencial,08:00,09:20,Matemática,R. Fernández
+Bachillerato,2,TIC,A,Lunes,Presencial,09:30,11:30,Programación II,L. Torres
+Bachillerato,2,TIC,A,Lunes,Presencial,11:50,13:20,Bases de Datos,F. Núñez
+Bachillerato,2,TIC,A,Martes,Presencial,08:00,09:20,Inglés Técnico,P. Suárez
+Bachillerato,2,TIC,A,Martes,Presencial,09:30,11:30,Soporte Técnico,D. Ríos
+Bachillerato,2,TIC,A,Martes,Presencial,11:50,13:20,Programación II,L. Torres
+Bachillerato,2,TIC,A,Miércoles,Presencial,08:00,09:20,Bases de Datos,F. Núñez
+Bachillerato,2,TIC,A,Miércoles,Presencial,09:30,11:30,Matemática,R. Fernández
+Bachillerato,2,TIC,A,Miércoles,Presencial,11:50,13:20,Soporte Técnico,D. Ríos
+Bachillerato,2,TIC,A,Jueves,Presencial,08:00,09:20,Programación II,L. Torres
+Bachillerato,2,TIC,A,Jueves,Presencial,09:30,11:30,Inglés Técnico,P. Suárez
+Bachillerato,2,TIC,A,Jueves,Presencial,11:50,13:20,Matemática,R. Fernández
+Bachillerato,2,TIC,A,Viernes,Presencial,08:00,09:20,Soporte Técnico,D. Ríos
+Bachillerato,2,TIC,A,Viernes,Presencial,09:30,11:30,Bases de Datos,F. Núñez
+Bachillerato,2,TIC,A,Viernes,Presencial,11:50,13:20,Innovación Tecnológica,G. Paz
+Bachillerato,2,TIC,B,Lunes,Presencial,08:00,09:20,Bases de Datos,F. Núñez
+Bachillerato,2,TIC,B,Lunes,Presencial,09:30,11:30,Matemática,R. Fernández
+Bachillerato,2,TIC,B,Lunes,Presencial,11:50,13:20,Programación II,K. Ibáñez
+Bachillerato,2,TIC,B,Martes,Presencial,08:00,09:20,Soporte Técnico,D. Ríos
+Bachillerato,2,TIC,B,Martes,Presencial,09:30,11:30,Inglés Técnico,P. Suárez
+Bachillerato,2,TIC,B,Martes,Presencial,11:50,13:20,Matemática,R. Fernández
+Bachillerato,2,TIC,B,Miércoles,Presencial,08:00,09:20,Programación II,K. Ibáñez
+Bachillerato,2,TIC,B,Miércoles,Presencial,09:30,11:30,Soporte Técnico,D. Ríos
+Bachillerato,2,TIC,B,Miércoles,Presencial,11:50,13:20,Bases de Datos,F. Núñez
+Bachillerato,2,TIC,B,Jueves,Presencial,08:00,09:20,Inglés Técnico,P. Suárez
+Bachillerato,2,TIC,B,Jueves,Presencial,09:30,11:30,Programación II,K. Ibáñez
+Bachillerato,2,TIC,B,Jueves,Presencial,11:50,13:20,Innovación Tecnológica,G. Paz
+Bachillerato,2,TIC,B,Viernes,Presencial,08:00,09:20,Matemática,R. Fernández
+Bachillerato,2,TIC,B,Viernes,Presencial,09:30,11:30,Bases de Datos,F. Núñez
+Bachillerato,2,TIC,B,Viernes,Presencial,11:50,13:20,Soporte Técnico,D. Ríos
+Bachillerato,2,Administración,A,Lunes,Presencial,08:00,09:20,Matemática Financiera,R. Fernández
+Bachillerato,2,Administración,A,Lunes,Presencial,09:30,11:30,Contabilidad II,V. Herrera
+Bachillerato,2,Administración,A,Lunes,Presencial,11:50,13:20,Liquidación de Haberes,E. Mora
+Bachillerato,2,Administración,A,Martes,Presencial,08:00,09:20,Inglés de Negocios,P. Suárez
+Bachillerato,2,Administración,A,Martes,Presencial,09:30,11:30,Gestión Empresarial,B. Castro
+Bachillerato,2,Administración,A,Martes,Presencial,11:50,13:20,Contabilidad II,V. Herrera
+Bachillerato,2,Administración,A,Miércoles,Presencial,08:00,09:20,Liquidación de Haberes,E. Mora
+Bachillerato,2,Administración,A,Miércoles,Presencial,09:30,11:30,Matemática Financiera,R. Fernández
+Bachillerato,2,Administración,A,Miércoles,Presencial,11:50,13:20,Gestión Empresarial,B. Castro
+Bachillerato,2,Administración,A,Jueves,Presencial,08:00,09:20,Contabilidad II,V. Herrera
+Bachillerato,2,Administración,A,Jueves,Presencial,09:30,11:30,Inglés de Negocios,P. Suárez
+Bachillerato,2,Administración,A,Jueves,Presencial,11:50,13:20,Matemática Financiera,R. Fernández
+Bachillerato,2,Administración,A,Viernes,Presencial,08:00,09:20,Gestión Empresarial,B. Castro
+Bachillerato,2,Administración,A,Viernes,Presencial,09:30,11:30,Liquidación de Haberes,E. Mora
+Bachillerato,2,Administración,A,Viernes,Presencial,11:50,13:20,Operaciones Comerciales,B. Castro
+Bachillerato,2,Administración,B,Lunes,Presencial,08:00,09:20,Contabilidad II,V. Herrera
+Bachillerato,2,Administración,B,Lunes,Presencial,09:30,11:30,Matemática Financiera,R. Fernández
+Bachillerato,2,Administración,B,Lunes,Presencial,11:50,13:20,Gestión Empresarial,E. Soria
+Bachillerato,2,Administración,B,Martes,Presencial,08:00,09:20,Liquidación de Haberes,E. Mora
+Bachillerato,2,Administración,B,Martes,Presencial,09:30,11:30,Inglés de Negocios,P. Suárez
+Bachillerato,2,Administración,B,Martes,Presencial,11:50,13:20,Contabilidad II,V. Herrera
+Bachillerato,2,Administración,B,Miércoles,Presencial,08:00,09:20,Gestión Empresarial,E. Soria
+Bachillerato,2,Administración,B,Miércoles,Presencial,09:30,11:30,Liquidación de Haberes,E. Mora
+Bachillerato,2,Administración,B,Miércoles,Presencial,11:50,13:20,Matemática Financiera,R. Fernández
+Bachillerato,2,Administración,B,Jueves,Presencial,08:00,09:20,Inglés de Negocios,P. Suárez
+Bachillerato,2,Administración,B,Jueves,Presencial,09:30,11:30,Contabilidad II,V. Herrera
+Bachillerato,2,Administración,B,Jueves,Presencial,11:50,13:20,Operaciones Comerciales,E. Soria
+Bachillerato,2,Administración,B,Viernes,Presencial,08:00,09:20,Matemática Financiera,R. Fernández
+Bachillerato,2,Administración,B,Viernes,Presencial,09:30,11:30,Gestión Empresarial,E. Soria
+Bachillerato,2,Administración,B,Viernes,Presencial,11:50,13:20,Liquidación de Haberes,E. Mora
+Bachillerato,3,TIC,A,Lunes,Presencial,08:00,09:20,Proyecto Final,L. Torres
+Bachillerato,3,TIC,A,Lunes,Presencial,09:30,11:30,Desarrollo de Apps,L. Torres
+Bachillerato,3,TIC,A,Lunes,Presencial,11:50,13:20,Testing y QA,F. Núñez
+Bachillerato,3,TIC,A,Martes,Presencial,08:00,09:20,Inglés Técnico,P. Suárez
+Bachillerato,3,TIC,A,Martes,Presencial,09:30,11:30,Redes Avanzadas,D. Ríos
+Bachillerato,3,TIC,A,Martes,Presencial,11:50,13:20,Desarrollo de Apps,L. Torres
+Bachillerato,3,TIC,A,Miércoles,Presencial,08:00,09:20,Testing y QA,F. Núñez
+Bachillerato,3,TIC,A,Miércoles,Presencial,09:30,11:30,Proyecto Final,L. Torres
+Bachillerato,3,TIC,A,Miércoles,Presencial,11:50,13:20,Redes Avanzadas,D. Ríos
+Bachillerato,3,TIC,A,Jueves,Presencial,08:00,09:20,Desarrollo de Apps,L. Torres
+Bachillerato,3,TIC,A,Jueves,Presencial,09:30,11:30,Inglés Técnico,P. Suárez
+Bachillerato,3,TIC,A,Jueves,Presencial,11:50,13:20,Innovación Tecnológica,G. Paz
+Bachillerato,3,TIC,A,Viernes,Presencial,08:00,09:20,Redes Avanzadas,D. Ríos
+Bachillerato,3,TIC,A,Viernes,Presencial,09:30,11:30,Testing y QA,F. Núñez
+Bachillerato,3,TIC,A,Viernes,Presencial,11:50,13:20,Proyecto Final,L. Torres
+Bachillerato,3,TIC,B,Lunes,Presencial,08:00,09:20,Testing y QA,F. Núñez
+Bachillerato,3,TIC,B,Lunes,Presencial,09:30,11:30,Redes Avanzadas,D. Ríos
+Bachillerato,3,TIC,B,Lunes,Presencial,11:50,13:20,Desarrollo de Apps,K. Ibáñez
+Bachillerato,3,TIC,B,Martes,Presencial,08:00,09:20,Proyecto Final,K. Ibáñez
+Bachillerato,3,TIC,B,Martes,Presencial,09:30,11:30,Inglés Técnico,P. Suárez
+Bachillerato,3,TIC,B,Martes,Presencial,11:50,13:20,Testing y QA,F. Núñez
+Bachillerato,3,TIC,B,Miércoles,Presencial,08:00,09:20,Desarrollo de Apps,K. Ibáñez
+Bachillerato,3,TIC,B,Miércoles,Presencial,09:30,11:30,Innovación Tecnológica,G. Paz
+Bachillerato,3,TIC,B,Miércoles,Presencial,11:50,13:20,Redes Avanzadas,D. Ríos
+Bachillerato,3,TIC,B,Jueves,Presencial,08:00,09:20,Inglés Técnico,P. Suárez
+Bachillerato,3,TIC,B,Jueves,Presencial,09:30,11:30,Testing y QA,F. Núñez
+Bachillerato,3,TIC,B,Jueves,Presencial,11:50,13:20,Proyecto Final,K. Ibáñez
+Bachillerato,3,TIC,B,Viernes,Presencial,08:00,09:20,Redes Avanzadas,D. Ríos
+Bachillerato,3,TIC,B,Viernes,Presencial,09:30,11:30,Desarrollo de Apps,K. Ibáñez
+Bachillerato,3,TIC,B,Viernes,Presencial,11:50,13:20,Innovación Tecnológica,G. Paz
+Bachillerato,3,Administración,A,Lunes,Presencial,08:00,09:20,Proyecto Final,B. Castro
+Bachillerato,3,Administración,A,Lunes,Presencial,09:30,11:30,Contabilidad Avanzada,V. Herrera
+Bachillerato,3,Administración,A,Lunes,Presencial,11:50,13:20,Liquidación de Haberes II,E. Mora
+Bachillerato,3,Administración,A,Martes,Presencial,08:00,09:20,Inglés de Negocios,P. Suárez
+Bachillerato,3,Administración,A,Martes,Presencial,09:30,11:30,Operaciones Comerciales,B. Castro
+Bachillerato,3,Administración,A,Martes,Presencial,11:50,13:20,Contabilidad Avanzada,V. Herrera
+Bachillerato,3,Administración,A,Miércoles,Presencial,08:00,09:20,Liquidación de Haberes II,E. Mora
+Bachillerato,3,Administración,A,Miércoles,Presencial,09:30,11:30,Proyecto Final,B. Castro
+Bachillerato,3,Administración,A,Miércoles,Presencial,11:50,13:20,Operaciones Comerciales,B. Castro
+Bachillerato,3,Administración,A,Jueves,Presencial,08:00,09:20,Contabilidad Avanzada,V. Herrera
+Bachillerato,3,Administración,A,Jueves,Presencial,09:30,11:30,Inglés de Negocios,P. Suárez
+Bachillerato,3,Administración,A,Jueves,Presencial,11:50,13:20,Liquidación de Haberes II,E. Mora
+Bachillerato,3,Administración,A,Viernes,Presencial,08:00,09:20,Operaciones Comerciales,B. Castro
+Bachillerato,3,Administración,A,Viernes,Presencial,09:30,11:30,Proyecto Final,B. Castro
+Bachillerato,3,Administración,A,Viernes,Presencial,11:50,13:20,Análisis de Herramientas,B. Castro
+Bachillerato,3,Administración,B,Lunes,Presencial,08:00,09:20,Contabilidad Avanzada,V. Herrera
+Bachillerato,3,Administración,B,Lunes,Presencial,09:30,11:30,Proyecto Final,E. Soria
+Bachillerato,3,Administración,B,Lunes,Presencial,11:50,13:20,Operaciones Comerciales,E. Soria
+Bachillerato,3,Administración,B,Martes,Presencial,08:00,09:20,Liquidación de Haberes II,E. Mora
+Bachillerato,3,Administración,B,Martes,Presencial,09:30,11:30,Inglés de Negocios,P. Suárez
+Bachillerato,3,Administración,B,Martes,Presencial,11:50,13:20,Contabilidad Avanzada,V. Herrera
+Bachillerato,3,Administración,B,Miércoles,Presencial,08:00,09:20,Operaciones Comerciales,E. Soria
+Bachillerato,3,Administración,B,Miércoles,Presencial,09:30,11:30,Liquidación de Haberes II,E. Mora
+Bachillerato,3,Administración,B,Miércoles,Presencial,11:50,13:20,Proyecto Final,E. Soria
+Bachillerato,3,Administración,B,Jueves,Presencial,08:00,09:20,Inglés de Negocios,P. Suárez
+Bachillerato,3,Administración,B,Jueves,Presencial,09:30,11:30,Contabilidad Avanzada,V. Herrera
+Bachillerato,3,Administración,B,Jueves,Presencial,11:50,13:20,Análisis de Herramientas,E. Soria
+Bachillerato,3,Administración,B,Viernes,Presencial,08:00,09:20,Proyecto Final,E. Soria
+Bachillerato,3,Administración,B,Viernes,Presencial,09:30,11:30,Operaciones Comerciales,E. Soria
+Bachillerato,3,Administración,B,Viernes,Presencial,11:50,13:20,Liquidación de Haberes II,E. Mora
