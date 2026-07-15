@@ -14,7 +14,7 @@
 <!-- Visión general -->
 ## 📖︲Descripción
 
-ÁnimAgent es un agente de inteligencia artificial diseñado para responder preguntas sobre la documentación institucional de un instituto. A partir de documentos reales como reglamentos, horarios, políticas de becas y preguntas frecuentes, el agente recupera información relevante y genera respuestas claras y confiables, sin alucinar datos que no estén en la fuente.
+ÁnimAgent es un agente de inteligencia artificial diseñado para responder preguntas sobre la documentación de un instituto. A partir de documentos reales como reglamentos, horarios, políticas de becas y preguntas frecuentes, el agente recupera información relevante y genera respuestas claras y confiables, sin alucinar datos que no estén en la fuente.
 
 Desarrollado como proyecto de la segunda etapa Oracle ONE 2026, ÁnimAgent combina técnicas modernas de RAG (Generación Aumentada por Recuperación) con un agente inteligente basado en LangGraph, capaz de enrutar cada consulta al conjunto de documentos más adecuado antes de responder.
 
