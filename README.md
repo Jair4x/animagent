@@ -46,7 +46,7 @@ animagent/
 │
 ├── assets/                     # Imágenes, logo y archivos estáticos del proyecto
 │
-├── documents/                  # Documentación de la institución
+├── documents/                  # Documentación de la institución, con subcarpetas por categoría y archivos PDF/CSV
 │
 ├── backend/
 │   ├── agent/

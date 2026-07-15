@@ -25,8 +25,8 @@ GEMINI_MODEL_NAME: str  = os.getenv("GEMINI_MODEL_NAME", "gemini-3.5-flash")
 # ------
 # RAG
 # ------
-DOCUMENTS_PATH: Path    = Path(os.getenv("DOCUMENTS_PATH", "")).resolve()
-FAISS_INDEX_PATH: Path  = Path(os.getenv("FAISS_INDEX_PATH", "")).resolve()
+DOCUMENTS_PATH: Path    = Path(os.getenv("DOCUMENTS_PATH", "../documents")).resolve()
+FAISS_INDEX_PATH: Path  = Path(os.getenv("FAISS_INDEX_PATH", "./faiss_index")).resolve()
 EMBEDDINGS_MODEL: str   = os.getenv("EMBEDDINGS_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
 CHUNK_SIZE: int         = int(os.getenv("CHUNK_SIZE", 500))
 CHUNK_OVERLAP: int      = int(os.getenv("CHUNK_OVERLAP", 50))
