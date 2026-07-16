@@ -1,6 +1,6 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_text_splitters import TextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from pathlib import Path
 import config
@@ -26,7 +26,7 @@ def split_documents(documents: list[Document]) -> list[Document]:
 
     `CHUNK_OVERLAP` (default: 50)
     """
-    splitter = TextSplitter(
+    splitter = RecursiveCharacterTextSplitter(
         chunk_size=config.CHUNK_SIZE,
         chunk_overlap=config.CHUNK_OVERLAP
     )
