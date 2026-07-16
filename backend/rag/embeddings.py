@@ -23,7 +23,7 @@ def split_documents(documents: list[Document]) -> list[Document]:
     
     ### .env values
     `CHUNK_SIZE` (default: 500)
-    
+
     `CHUNK_OVERLAP` (default: 50)
     """
     splitter = TextSplitter(
@@ -36,7 +36,7 @@ def split_documents(documents: list[Document]) -> list[Document]:
 
 def build_index(documents: list[Document]) -> FAISS:
     """
-    Build and save the FAISS index.
+    Build and save the FAISS index
 
     ### .env values
     `FAISS_INDEX_PATH` (default: `./faiss_index`)
@@ -53,7 +53,10 @@ def build_index(documents: list[Document]) -> FAISS:
 
 def load_index() -> FAISS:
     """
-    Load the already existent FAISS index file
+    Try to load the FAISS index
+
+    ### .env values
+    `FAISS_INDEX_PATH` (default: ./faiss_index)
     """
     embeddings  = get_embeddings_model()
     index       = FAISS.load_local(
@@ -65,17 +68,16 @@ def load_index() -> FAISS:
     print(f"[Embeddings] Index loaded from {config.FAISS_INDEX_PATH}")
     return index
 
-def get_or_build_index(documents: list[Document]) -> FAISS:
+def load_or_build_index(documents: list[Document]) -> FAISS:
     """
-    Check if FAISS index file exists in its folder.
+    Tries to load the FAISS index file.
 
-    If `True`: executes `load_index()`
+    If it doesn't exist or loading fails, it builds the file instead.
 
-    Else (or if loading fails): executes `build_index(documents)`
+    ### Parameters
+    `documents` - List of documents needed to build the FAISS index
     """
-    index_file = config.FAISS_INDEX_PATH / "index.faiss"
-
-    if index_file.exists():
+    try: 
         return load_index()
-    
-    return build_index(documents)
+    except: 
+        return build_index(documents)
