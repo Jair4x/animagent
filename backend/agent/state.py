@@ -21,3 +21,4 @@ class AgentState(MessagesState):
     category:   str | None
     context:    str | None
     response:   str | None
+    source:     str | None

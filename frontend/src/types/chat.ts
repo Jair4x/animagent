@@ -18,4 +18,5 @@ export interface ChatRequest {
 export interface ChatResponse {
     response:   string
     category:   string | null
+    source:     string | null
 }

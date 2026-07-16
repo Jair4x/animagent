@@ -45,8 +45,9 @@ def retriever_node(state: AgentState, index: FAISS) -> AgentState:
 
     documents   = retrieve(index, query, category=filter_category)
     context     = format_context(documents)
+    source      = documents[0].metadata.get("source") if documents else None
 
-    return {**state, "context": context}
+    return {**state, "context": context, "source": source}
 
 def synthesizer_node(state: AgentState, llm: BaseChatModel) -> AgentState:
     """

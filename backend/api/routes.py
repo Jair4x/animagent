@@ -11,8 +11,9 @@ class ChatRequest(BaseModel):
     provider:   str | None
 
 class ChatResponse(BaseModel):
-    response: str
-    category: str | None
+    response:   str
+    category:   str | None
+    source:     str | None
 
 
 @router.post("/chat", response_model=ChatResponse)
@@ -40,6 +41,7 @@ async def chat(
     class ChatResponse(
         response, # The agent's response
         category, # Category determined by the router (for v1.1)
+        source, # Document consulted for the information
     )
     ```
     """
@@ -58,4 +60,5 @@ async def chat(
     return ChatResponse(
         response=result["response"],
         category=result["category"],
+        source=result["source"]
     )
