@@ -3,6 +3,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.vectorstores import FAISS
 from agent.state import AgentState
 from rag.retriever import retrieve, format_context
+import re
 
 SYNTH_PROMPT = ChatPromptTemplate.from_template(
     """
@@ -64,4 +65,15 @@ def synthesizer_node(state: AgentState, llm: BaseChatModel) -> AgentState:
         "query":    state["query"],
     })
 
-    return {**state, "response": result.content}
+    content = result.content
+
+    # Gemini's model responds with a list, so we get the content directly
+    if isinstance(content, list):
+        content = result.text
+    else:
+        # Groq's model has extended thinking, so they add it between <think> tags. We get rid of them for the response.
+        content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL)
+
+    content = content.strip() 
+
+    return {**state, "response": content}

@@ -2,6 +2,7 @@ from langchain_core.documents import Document
 from langchain_core.language_models import BaseChatModel
 from langchain_core.prompts import ChatPromptTemplate
 from agent.state import AgentState
+import re
 
 CATEGORIES = ["horarios", "convivencia", "aranceles", "faq", "general"]
 
@@ -34,11 +35,19 @@ def route(state: AgentState, llm: BaseChatModel) -> AgentState:
     """
     chain       = ROUTER_PROMPT | llm
     result      = chain.invoke({"query": state["query"]})
-    category    = result.content.strip().lower()
+    content     = result.content
 
-    # For if the LLM allucinates.
-    if category not in CATEGORIES:
-        category = "general"
+    # Gemini's model responds with a list, so we get the content directly
+    if isinstance(content, list):
+        content = result.text
+    else:
+        # Groq's model has extended thinking, so they add it between <think> tags. We get rid of them for the response.
+        content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL)
+    
+    content     = content.strip().lower()
+    content     = content.split()[0] # Just in case they add something else. Take the first word.
+
+    category    = content if content in CATEGORIES else "general" # For if the LLM allucinates. Fallback to "general"
     
     print(f"[Router] '{state['query'][:60]}' -> Category: {category}")
 
