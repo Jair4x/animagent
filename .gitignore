@@ -1,8 +1,22 @@
+# Environment variables
 .env
 
+# FAISS index folder
 faiss_index
 
 # Tests
 __pycache__
 .pytest_cache
 *.pyc
+
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# vscode setting folder
+.vscode/
