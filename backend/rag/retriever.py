@@ -12,7 +12,6 @@ def retrieve(
     If a category is given, it only filters inside that document collection.
 
     ### Parameters
-
     `index` - FAISS file
 
     `query` - Search query
@@ -44,7 +43,6 @@ def format_context(documents: list[Document]) -> str:
     including the source and category of each fragment.
 
     ### Parameters
-
     `documents` - List of documents to converts
     """
     fragments = []
@@ -52,7 +50,7 @@ def format_context(documents: list[Document]) -> str:
     for i, doc in enumerate(documents, start=1):
         source      = doc.metadata.get("source", "desconocido")
         category    = doc.metadata.get("category", "")
-        header      = f"[Fragment {i} - {source} ({category})]"
+        header      = f"[Fragmento {i} - {source} ({category})]"
         fragments.append(f"{header}\n{doc.page_content}")
 
     return "\n\n".join(fragments)
