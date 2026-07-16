@@ -29,9 +29,11 @@ def route(state: AgentState, llm: BaseChatModel) -> AgentState:
     to answer it. Updates the 'category' field of the state
 
     ### Parameters
-    `state` - AgentState instance
+    #### `state`
+    `AgentState` instance
     
-    `llm` - Router LLM.
+    #### `llm`
+    Router's LLM model. Should be lighter than main model.
     """
     chain       = ROUTER_PROMPT | llm
     result      = chain.invoke({"query": state["query"]})

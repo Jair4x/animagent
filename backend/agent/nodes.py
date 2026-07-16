@@ -28,15 +28,17 @@ SYNTH_PROMPT = ChatPromptTemplate.from_template(
 
 def retriever_node(state: AgentState, index: FAISS) -> AgentState:
     """
-    Recovers the most relevant document fragments for the query, 
-    filtering by the category set by the router.
-    
-    Updates the `context` field of the AgentState with the formatted fragments.
+    Recovers the most relevant document fragments for the query, filtering by the category set by the router.
 
     ### Parameters
-    `state` - AgentState
+    #### `state`
+    `AgentState` instance
 
-    `index` - FAISS index
+    #### `index`
+    FAISS index
+
+    ### Returns
+    Updated `AgentState` instance with `'context'` field containing the formatted fragments and `'source'` field with consulted document.
     """
     category    = state.get("category")
     query       = state["query"]
@@ -53,12 +55,16 @@ def synthesizer_node(state: AgentState, llm: BaseChatModel) -> AgentState:
     """
     Generates the final response using the LLM, the recovered context and the original query.
 
-    Updates the `response` field of the AgentState instance.
-
     ### Parameters
-    `state` - AgentState instance
+    
+    #### `state`
+    `AgentState` instance
 
-    `llm` - Synthesizer LLM.
+    #### `llm`
+    Synthesizer's LLM model
+
+    ### Returns
+    Updated `AgentState` instance with the `'response'` field containing the final response from the agent.
     """
     chain   = SYNTH_PROMPT | llm
     result  = chain.invoke({

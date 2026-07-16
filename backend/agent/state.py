@@ -9,13 +9,16 @@ class AgentState(MessagesState):
 
     ### Parameters
 
-    `query` - User's query in plain text
-
-    `category` - Query category, defined by the router
-
-    `context` - Fragments recovered by the retriever, already formatted as string
-    
-    `response` - LLM's response
+    #### `query`
+    User's query in plain text
+    #### `category`
+    Query category, defined by the router
+    #### `context`
+    Fragments recovered by the retriever, already formatted as string
+    #### `response`
+    LLM's response
+    #### `source`
+    Document consulted by the retriever
     """
     query:      str
     category:   str | None

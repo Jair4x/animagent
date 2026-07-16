@@ -11,8 +11,15 @@ def build_graph(llm: BaseChatModel, router_llm: BaseChatModel, index: FAISS) -> 
     Builds and compiles ÁnimAgent's graph.
 
     ### Parameters
-    `llm` - Instanciated language model
-    `index` - FAISS index
+    
+    #### `llm`
+    Instanciated language model
+    
+    #### `index`
+    Loaded FAISS index
+    
+    ### Returns
+    `CompiledStateGraph` object
     """
     graph = StateGraph(AgentState)
 
