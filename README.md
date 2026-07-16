@@ -36,7 +36,62 @@ Desarrollado como proyecto de la segunda etapa Oracle ONE 2026, ÁnimAgent combi
 <!-- Arquitectura del sistema -->
 ## ⚙️︲Arquitectura y flujo
 
-> 🚧 En proceso. La documentación de la arquitectura y el diagrama de flujo del agente estarán disponibles próximamente.
+### Arquitectura del sistema
+
+ÁnimAgent está compuesto por tres capas principales: el frontend de chat, el backend con FastAPI y el agente LangGraph con RAG.
+
+```mermaid
+graph TD
+    subgraph Frontend
+        A[Astro + Vue\nChat UI]
+    end
+
+    subgraph Backend
+        B[FastAPI\nAPI REST]
+        C[Model Factory\nGroq / Gemini]
+        subgraph Agente LangGraph
+            D[Router]
+            E[Retriever]
+            F[Sintetizador]
+        end
+        subgraph RAG
+            G[Loader\nPDF + CSV]
+            H[Embeddings\nHuggingFace]
+            I[(FAISS\nVector Store)]
+        end
+    end
+
+    subgraph Documentos
+        J[documents/\nPDF + CSV]
+    end
+
+    A <-->|HTTP| B
+    B --> C
+    C --> D
+    D --> E
+    E --> I
+    I --> F
+    G --> H --> I
+    J --> G
+```
+
+### Flujo de una consulta
+
+1. El usuario escribe una pregunta en el chat
+2. El frontend envía un `POST /api/chat` con la query y opcionalmente el provider y una API key de Gemini en el header
+3. FastAPI instancia el modelo correspondiente (Gemini o Groq) y construye el grafo del agente
+4. El nodo **Router** analiza la pregunta y la clasifica en una categoría (`horarios`, `convivencia`, `aranceles`, `faq` o `general`)
+5. El nodo **Retriever** busca en el índice FAISS los fragmentos más relevantes de esa categoría
+6. El nodo **Sintetizador** recibe el contexto recuperado y genera la respuesta final citando la fuente
+7. La respuesta vuelve al frontend y se muestra en el chat
+
+### Componentes del agente
+
+- `router.py` — clasifica la query usando el LLM
+- `retriever.py` — busca fragmentos relevantes en FAISS filtrados por categoría
+- `nodes.py` — lógica de cada nodo del grafo
+- `graph.py` — ensambla el flujo con LangGraph
+- `factory.py` — instancia Gemini o Groq según el provider elegido
 
 <!-- Estructura del Proyecto -->
 ## 📂︲Estructura del proyecto
@@ -66,6 +121,10 @@ animagent/
 │   ├── api/
 │   │   └── routes.py           # Endpoints FastAPI
 │   │
+│   ├── tests/
+│   │   ├── integration         # Test de integración (flujo de agente completo)
+│   │   └── unit                # Tests unitarios (configuración, loader, retriever, router)
+│   │
 │   ├── config.py               # Variables de entorno y configuración global
 │   ├── main.py                 # Punto de entrada del servidor
 │   └── requirements.txt
@@ -86,6 +145,82 @@ animagent/
 ├── .env.example                # Template de variables de entorno
 ├── .gitignore
 └── README.md
+```
+
+## 🚀︲Instalación y uso
+
+### Requisitos previos
+
+- Python 3.11+
+- Node.js 18+
+- Git
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/tu-usuario/animagent.git
+cd animagent
+```
+
+### 2. Configurar el backend
+
+```bash
+cd backend
+python -m venv .venv
+```
+
+#### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+#### MacOS
+
+```bash
+source .venv/bin/activate
+```
+
+### 3. Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configurar variables de entorno
+
+```bash
+cp ./.env.example ./.env
+```
+
+Recuerda **editar el .env con tus API keys y parámetros**.
+
+### 5. Correr el servidor
+
+```bash
+python main.py
+```
+
+## 🧪︲Tests
+
+Los tests están organizados en dos categorías: unitarios e integración.
+Requieren tener el `.env` configurado con al menos una API key válida.
+
+```bash
+cd backend
+python -m pytest tests/ -v
+```
+
+## Solo unitarios
+
+```bash
+python -m pytest tests/unit/ -v
+```
+
+## Solo integración
+
+```bash
+python -m pytest tests/integration/ -v
 ```
 
 <!-- Tecnologías usadas -->
@@ -143,6 +278,7 @@ animagent/
 - Deploy en OCI Compute
 - Arquitectura contenedorizada con Docker
 - README con descripción, arquitectura y ejemplos de uso
+- Tests automatizados del agente y del backend (parte de v1.2, pasado a v1.0)
 
 ### 🚧｜Versión 1.1
 
@@ -156,7 +292,6 @@ animagent/
 - Carga de documentos nuevos sin necesidad de reiniciar el servidor (hot reload del índice)
 - Sistema de feedback por respuesta (pulgar arriba / abajo)
 - Logging de consultas para análisis de uso
-- Tests automatizados del agente y del backend
 
 ### 🚧｜Versión 2.0
 
