@@ -4,8 +4,14 @@ from pathlib import Path
 import pandas as pd
 import config
 
-# Load PDFs and convert each page in a Document.
 def load_pdfs(directory: Path) -> list[Document]:
+    """
+    Loads the PDF files in the designated folder
+    and converts each page into a LangChain Document
+
+    ### Parameters
+    `directory` - Folder in which to search the PDF files
+    """
     documents = []
 
     for pdf_path in directory.rglob("*.pdf"):
@@ -20,8 +26,14 @@ def load_pdfs(directory: Path) -> list[Document]:
 
     return documents
 
-# Load CSVs and convert each row in a Document.
 def load_csvs(directory: Path) -> list[Document]:
+    """
+    Loads the CSV files in the designated folder
+    and converts each row into a LangChain Document
+
+    ### Parameters
+    `directory` - Folder in which to search the CSV files
+    """
     documents = []
 
     for csv_path in directory.rglob("*.csv"):
@@ -45,8 +57,13 @@ def load_csvs(directory: Path) -> list[Document]:
 
     return documents
 
-# Load every single document
 def load_all_documents() -> list[Document]:
+    """
+    Loads every PDF and CSV file
+
+    ### .env values
+    `DOCUMENTS_PATH` (default: ../documents)
+    """
     base = config.DOCUMENTS_PATH
 
     pdfs = load_pdfs(base)
