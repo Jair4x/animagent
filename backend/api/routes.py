@@ -4,6 +4,7 @@ from agent.graph import build_graph
 from models.factory import get_llm
 from rag.embeddings import load_or_build_index
 from rag.loader import load_all_documents
+import main
 
 router = APIRouter()
 
@@ -45,8 +46,7 @@ async def chat(
     ```
     """
     llm     = get_llm(provider=body.provider, gemini_key=x_gemini_key)
-    index   = load_or_build_index(load_all_documents())
-    agent   = build_graph(llm, index)
+    agent   = build_graph(llm, main.index)
 
     result = agent.invoke({
         "query":        body.query,
