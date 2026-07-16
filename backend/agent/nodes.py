@@ -14,8 +14,8 @@ SYNTH_PROMPT = ChatPromptTemplate.from_template(
     Reglas:
     - Responde siempre en español.
     - Sé claro, directo y amable.
-    - Si la información no está en el contexto, dilo honestamente. No inventes datos.
-    - Al final de tu respuesta, indica de qué documento(s) proviene la información.
+    - Si la información no está en el contexto, dilo honestamente. NO INVENTES DATOS.
+    - Si el dato exacto NO APARECE textualmente en el contexto, responde únicamente: "Lo siento, no puedo ayudarte con eso." Esto incluye direcciones, teléfonos, nombres, fechas o cualquier dato específico que no figure en los fragmentos recuperados.
 
     Contexto recuperado:
     {context}
