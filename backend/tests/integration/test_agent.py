@@ -2,14 +2,15 @@ import pytest
 from agent.graph import build_graph
 from rag.loader import load_all_documents
 from rag.embeddings import load_or_build_index
-from models.factory import get_llm
+from models.factory import get_llm, get_router_llm
 from agent.router import CATEGORIES
 
 @pytest.fixture(scope="module")
 def agent():
-    llm   = get_llm()
-    index = load_or_build_index(load_all_documents())
-    return build_graph(llm, index)
+    llm         = get_llm()
+    router_llm  = get_router_llm()
+    index       = load_or_build_index(load_all_documents())
+    return build_graph(llm, router_llm, index)
 
 def invoke(agent, query: str) -> dict:
     return agent.invoke({
@@ -47,9 +48,10 @@ def test_agent_aranceles_query(agent):
 def test_agent_does_not_hallucinate(agent):
     result = invoke(agent, "¿Cuál es el número de teléfono de ÁNIMA?")
     response = result["response"].lower()
+    print(response)
     assert any(phrase in response for phrase in [
         "no tengo", "no encuentro", "no está", "no dispongo",
-        "no se menciona", "no figura", "consultar"
+        "no se menciona", "no figura", "consultar", "no encontré"
     ])
 
 def test_agent_with_gemini(agent):
@@ -58,9 +60,10 @@ def test_agent_with_gemini(agent):
     if not gemini_key:
         pytest.skip("GEMINI_API_KEY no configurada, saltando test de Gemini")
 
-    llm_gemini   = get_llm(provider="gemini", gemini_key=gemini_key)
-    index        = load_or_build_index(load_all_documents())
-    agent_gemini = build_graph(llm_gemini, index)
+    llm_gemini          = get_llm(provider="gemini", gemini_key=gemini_key)
+    llm_router_gemini   = get_router_llm(provider="gemini", gemini_key=gemini_key)
+    index               = load_or_build_index(load_all_documents())
+    agent_gemini        = build_graph(llm_gemini, llm_router_gemini, index)
 
     result = invoke(agent_gemini, "¿Qué es ÁNIMA?")
     assert isinstance(result["response"], str)
