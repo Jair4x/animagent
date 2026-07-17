@@ -33,8 +33,8 @@ function useApp() {
             <input
                 v-model="apiKey"
                 type="password"
-                placeholder="AIza..."
-                class="w-full bg-[#0f1117] border border-white/10 
+                placeholder="ultra.secret-key-a5s68w7c564wewR"
+                class="w-[95%] bg-[#0f1117] border border-white/10 
                        rounded-lg px-3 py-2 text-sm text-white placeholder-gray-600 outline-none 
                      focus:border-[#1D9E75] transition-colors mb-5"
                 />
@@ -42,22 +42,22 @@ function useApp() {
             <div class="flex gap-3">
                 <button
                     @click="$emit('cancel')"
-                    class="flex-1 px-4 py-2 rounded-lg border border-white/10 text-sm text-gray-400
-                         hover:text-white hover:border-white/20 transition-colors"
+                    class="flex-1 px-4 py-2 rounded-lg border border-white/10 text-sm text-gray-600
+                         hover:text-white hover:border-white/20 transition-colors hover:cursor-pointer"
                 >
                     Cancelar
                 </button>
 
                 <button
                     @click="useApp"
-                    class="flex-1 px-4 py-2 rounded-lg border border-white/10 text-sm text-gray-300
-                         hover:text-white hover:border-white/20 transition-colors">
+                    class="flex-1 px-4 py-2 rounded-lg border border-white/10 text-sm text-gray-600
+                         hover:text-white hover:border-white/20 transition-colors hover:cursor-pointer">
                     Usar la API key de la app
                 </button>
 
                 <button
                     @click="useOwn"
-                    class="flex-1 px-4 py-2 rounded-lg bg-[#1D9E75] text-sm text-white hover:bg-[#0F6E56] transition-colors"
+                    class="flex-1 px-4 py-2 rounded-lg bg-[#1D9E75] text-sm text-white hover:bg-[#0F6E56] transition-colors hover:cursor-pointer"
                 >
                     Confirmar
                 </button>

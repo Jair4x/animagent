@@ -36,7 +36,7 @@ watch(
 
             <p class="text-gray-400 text-sm">Haz una pregunta sobre ÁNIMA</p>
 
-            <div class="flex flex-col gap-1.5 mt-1">
+            <div class="flex flex-col mt-1">
                 <p class="text-xs text-gray-600">¿Qué programas tiene la institución?</p>
                 <p class="text-xs text-gray-600">¿Cuándo tienen Back-end los grupos de FINEST?</p>
                 <p class="text-xs text-gray-600">¿Cuántas faltas puedo tener?</p>

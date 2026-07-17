@@ -69,10 +69,10 @@ function onKeydown(e: KeyboardEvent) {
                     :key="p.value"
                     @click="onProviderChange(p.value as Provider)"
                     :class="[
-                        'px-3 py-1 rounded-md text-xs transition-colors',
+                        'px-3 py-1 rounded-md text-xs transition-colors hover:cursor-pointer',
                         provider === p.value
-                            ? 'bg-[#1D9E75] text-white'
-                            : 'text-gray-400 hover:text-white border border-white/10 hover:border-white/20'
+                            ? 'bg-[#1D9E75] text-white border-none hover:bg-[#0F6E56]'
+                            : 'text-gray-600 border border-white/10 hover:border-white/20'
                     ]"
                 >
                     {{ p.label }}
@@ -100,13 +100,13 @@ function onKeydown(e: KeyboardEvent) {
                 placeholder="Haz una pregunta..."
                 rows="1"
                 :disabled="isLoading"
-                class="flex-1 bg-transparent outline-none text-sm text-white placeholder-gray-600 resize-none leading-relaxed disabled:opacity-50"
+                class="flex-1 bg-transparent outline-none border-none py-1.5 text-sm text-white placeholder-gray-600 resize-none leading-relaxed disabled:opacity-50"
             />
 
             <button
                 @click="onSend"
                 :disabled="!query.trim() || isLoading"
-                class="w-8 h-8 flex items-center justify-center rounded-lg bg-[#1D9E75] hover:bg-[#0F6E56] disabled:opacity-40 disabled:cursor-not-allowed transition-colors shrink-0"
+                class="w-8 h-8 flex items-center justify-center rounded-lg bg-[#1D9E75] hover:bg-[#0F6E56] hover:cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-colors shrink-0"
             >
                 <i class="ti ti-send text-white text-sm" aria-hidden="true" />
             </button>

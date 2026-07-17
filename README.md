@@ -132,9 +132,10 @@ animagent/
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
+│   │   │   ├── Chat.vue        # Combina ChatWindow y ChatInput
 │   │   │   ├── ChatWindow.vue  # Ventana de mensajes
 │   │   │   ├── ChatInput.vue   # Input del usuario
-│   │   │   └── ApiKeyModal.vue # Modal para ingresar API key propia
+│   │   │   └── ApiKeyModal.vue # Modal para ingresar API key de Gemini propia
 │   │   ├── pages/
 │   │   │   └── index.astro     # Página principal
 │   │   └── services/
