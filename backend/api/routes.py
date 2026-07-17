@@ -2,7 +2,7 @@ from fastapi import APIRouter, Header
 from pydantic import BaseModel
 from agent.graph import build_graph
 from models.factory import get_llm, get_router_llm
-import main
+import index_store
 
 router = APIRouter()
 
@@ -47,7 +47,7 @@ async def chat(
     """
     llm         = get_llm(provider=body.provider, gemini_key=x_gemini_key)
     router_llm  = get_router_llm(provider=body.provider, gemini_key=x_gemini_key)
-    agent       = build_graph(llm, router_llm, main.index)
+    agent       = build_graph(llm, router_llm, index_store.index)
 
     result = agent.invoke({
         "query":        body.query,

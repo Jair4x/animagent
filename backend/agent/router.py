@@ -42,9 +42,6 @@ def route(state: AgentState, llm: BaseChatModel) -> AgentState:
     # Gemini's model responds with a list, so we get the content directly
     if isinstance(content, list):
         content = result.text
-    else:
-        # Groq's model has extended thinking, so they add it between <think> tags. We get rid of them for the response.
-        content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL)
     
     content     = content.strip().lower()
     content     = content.split()[0] # Just in case they add something else. Take the first word.

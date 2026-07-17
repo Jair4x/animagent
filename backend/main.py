@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.routes import router
 from rag.loader import load_all_documents
 from rag.embeddings import load_or_build_index
+import index_store
 import config
 
 index = None
@@ -14,10 +15,9 @@ async def lifespan(app: FastAPI):
     Loads the FAISS index a single time when initializing the server 
     and stores it in memory to reuse it in every request.
     """
-    global index
     print("[ÁnimAgent] Initializing server...")
-    documents   = load_all_documents()
-    index       = load_or_build_index(documents)
+    documents           = load_all_documents()
+    index_store.index   = load_or_build_index(documents)
     print("[ÁnimAgent] Index done. Server online.")
     yield
     print("[ÁnimAgent] Shutting down...")
