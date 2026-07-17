@@ -26,37 +26,6 @@ def load_pdfs(directory: Path) -> list[Document]:
 
     return documents
 
-def load_csvs(directory: Path) -> list[Document]:
-    """
-    Loads the CSV files in the designated folder
-    and converts each row into a LangChain Document
-
-    ### Parameters
-    `directory` - Folder in which to search the CSV files
-    """
-    documents = []
-
-    for csv_path in directory.rglob("*.csv"):
-        df = pd.read_csv(csv_path)
-
-        for _, row in df.iterrows():
-            content = "\n".join(
-                f"{col}: {val}" 
-                for col, val in row.items()
-                if pd.notna(val) # Filters empty cells to prevent adding innecesary noice
-            )
-
-            doc = Document(
-                page_content=content,
-                metadata={
-                    "source": csv_path.name,
-                    "category": csv_path.parent.name
-                }
-            )
-            documents.append(doc)
-
-    return documents
-
 def load_all_documents() -> list[Document]:
     """
     Loads every PDF and CSV file
@@ -65,14 +34,6 @@ def load_all_documents() -> list[Document]:
     `DOCUMENTS_PATH` (default: ../documents)
     """
     base = config.DOCUMENTS_PATH
-
-    pdfs = load_pdfs(base)
-    csvs = load_csvs(base)
-
-    all_docs = pdfs + csvs
-
-    print(f"[Loader] Loaded {len(pdfs)} PDF pages")
-    print(f"[Loader] Loaded {len(csvs)} CSV rows")
-    print(f"[Loader] Total documents loaded: {len(all_docs)}")
-
-    return all_docs
+    docs = load_pdfs(base)
+    print(f"[Loader] Loaded {len(docs)} PDF pages")
+    return docs

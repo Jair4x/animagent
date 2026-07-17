@@ -33,7 +33,8 @@ def get_llm(provider: str | None = None, gemini_key: str | None = None) -> BaseC
     # Or use Groq
     return ChatGroq(
         model=config.GROQ_MODEL_NAME,
-        api_key=config.GROQ_API_KEY
+        api_key=config.GROQ_API_KEY,
+        reasoning_format="hidden",
     )
 
 def get_router_llm(provider: str | None = None, gemini_key: str | None = None) -> BaseChatModel:
@@ -58,5 +59,6 @@ def get_router_llm(provider: str | None = None, gemini_key: str | None = None) -
     # Or use Groq
     return ChatGroq(
         model=config.GROQ_MODEL_NAME,
-        api_key=config.GROQ_API_KEY
+        api_key=config.GROQ_API_KEY,
+        reasoning_format="hidden",
     )
