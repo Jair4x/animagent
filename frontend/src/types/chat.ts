@@ -5,7 +5,6 @@ export interface Message {
     role:       "user" | "agent"
     content:    string
     source?:    string
-    category?:  string
     timestamp:  Date
 }
 
@@ -17,6 +16,5 @@ export interface ChatRequest {
 
 export interface ChatResponse {
     response:   string
-    category:   string | null
     source:     string | null
 }

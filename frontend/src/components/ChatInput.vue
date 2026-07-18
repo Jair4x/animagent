@@ -32,7 +32,7 @@ function onProviderChange(value: Provider) {
 function onModalConfirm(key: string | null) {
     provider.value = "gemini"
     geminiKey.value = key
-    showModal = false
+    showModal.value = false
 }
 
 function onModalCancel() {
@@ -85,7 +85,7 @@ function onKeydown(e: KeyboardEvent) {
                 </span>
                 <button
                     @click="showModal = true"
-                    class="text-xs text-gray-500 hover:text-[#1D9E75] transition-colors underline underline-offset-2"
+                    class="text-xs text-gray-600 hover:text-[#1D9E75] transition-colors hover:cursor-pointer"
                 >
                     Cambiar API key
                 </button>
