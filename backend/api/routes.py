@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Header
 from pydantic import BaseModel
 from agent.graph import build_graph
-from models.factory import get_llm, get_router_llm
+from models.factory import get_llm
 import index_store
 
 router = APIRouter()
@@ -12,8 +12,7 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     response:   str
-    category:   str | None
-    source:     str | None
+    source:     str | None = None
 
 
 @router.post("/chat", response_model=ChatResponse)
@@ -24,41 +23,31 @@ async def chat(
     """
     Main endpoint of the agent.
 
-    ### Parameters
+    ### Args
     #### `body`
     The user query and LLM provider.
-
-    Content/format:
-    ```python
-    query:      str
-    provider:   str | None
-    ```
     #### `x_gemini_key`
-    Google Gemini API key, if set by the user, sent via HTTP header.
-    
+    Google Gemini API key sent via HTTP header.
     ### Returns
-    ```python
-    class ChatResponse(
-        response, # The agent's response
-        category, # Category determined by the router (for v1.1)
-        source, # Document consulted for the information
-    )
-    ```
+    Agent response and source document.
     """
     llm         = get_llm(provider=body.provider, gemini_key=x_gemini_key)
-    router_llm  = get_router_llm(provider=body.provider, gemini_key=x_gemini_key)
-    agent       = build_graph(llm, router_llm, index_store.index)
+    agent       = build_graph(llm, index_store.index)
 
-    result = agent.invoke({
-        "query":        body.query,
-        "category":     None,
-        "context":      None,
-        "response":     None,
-        "messages":     [],
-    })
+    result = agent.invoke({"messages": [{"role": "user", "content": body.query}]})
+    messages    = result["messages"]
 
-    return ChatResponse(
-        response=result["response"],
-        category=result["category"],
-        source=result["source"]
-    )
+    source      = None
+
+    for msg in reversed(messages):
+        if hasattr(msg, "name") and hasattr(msg, "content"):
+            if "__source__:" in (msg.content or ""):
+                source = msg.content.split("__source__:")[-1].strip().split("\n")[0]
+                break
+
+    response    = messages[-1].content
+
+    if isinstance(response, list):
+        response = messages[-1].text
+
+    return ChatResponse(response=response, source=source)
