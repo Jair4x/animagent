@@ -74,8 +74,9 @@ def load_or_build_index(documents: list[Document]) -> FAISS:
 
     If it doesn't exist or loading fails, it builds the file instead.
 
-    ### Parameters
-    `documents` - List of documents needed to build the FAISS index
+    ### Args
+    #### `documents`
+    List of documents needed to build the FAISS index
     """
     try: 
         return load_index()

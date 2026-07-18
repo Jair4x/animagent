@@ -11,21 +11,23 @@ def retrieve(
     Searches the most relevant K chunks in the FAISS index for the given query.
     If a category is given, it only filters inside that document collection.
 
-    ### Parameters
-    `index` - FAISS file
-
-    `query` - Search query
-
-    `category` - Document collection to search in (optional)
-
-    `k` - Number of most relevant chunks to show (default: 4)
+    ### Args
+    #### `index`
+    FAISS file
+    #### `query`
+    Search query
+    #### `category`
+    Document collection to search in (optional)
+    #### `k`
+    Number of most relevant chunks to show (default: 4)
     """
+    filter_category = {"category": category} if category else None
     
     if category:
         results = index.similarity_search(
             query,
             k=k,
-            filter={"category": category}
+            filter=filter_category
         )
     else:
         results = index.similarity_search(query, k=k)
@@ -42,8 +44,9 @@ def format_context(documents: list[Document]) -> str:
     Converts a recovered document list in a string with a legible format for the LLM,
     including the source and category of each fragment.
 
-    ### Parameters
-    `documents` - List of documents to converts
+    ### Args
+    #### `documents`
+    List of documents to convert
     """
     fragments = []
 

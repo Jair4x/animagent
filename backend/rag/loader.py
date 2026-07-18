@@ -1,7 +1,6 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.documents import Document
 from pathlib import Path
-import pandas as pd
 import config
 
 def load_pdfs(directory: Path) -> list[Document]:
@@ -9,8 +8,9 @@ def load_pdfs(directory: Path) -> list[Document]:
     Loads the PDF files in the designated folder
     and converts each page into a LangChain Document
 
-    ### Parameters
-    `directory` - Folder in which to search the PDF files
+    ### Args
+    #### `directory`
+    Folder in which to search the PDF files
     """
     documents = []
 
