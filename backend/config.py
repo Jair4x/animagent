@@ -17,12 +17,10 @@ FRONTEND_URL: str   = os.getenv("FRONTEND_URL", "http://localhost:4321")
 DEFAULT_PROVIDER: str       = os.getenv("DEFAULT_PROVIDER", "groq")
 
 GROQ_API_KEY: str           = os.getenv("GROQ_API_KEY", "")
-GROQ_MODEL_NAME: str        = os.getenv("GROQ_MODEL_NAME", "qwen/qwen3.6-27b")
-GROQ_ROUTER_MODEL: str      = os.getenv("GROQ_ROUTER_MODEL", "llama-3.1-8b-instant")
+GROQ_MODEL_NAME: str        = os.getenv("GROQ_MODEL_NAME", "llama-3.1-8b-instant")
 
 GEMINI_API_KEY: str         = os.getenv("GEMINI_API_KEY", "")
 GEMINI_MODEL_NAME: str      = os.getenv("GEMINI_MODEL_NAME", "gemini-3.5-flash")
-GEMINI_ROUTER_MODEL: str    = os.getenv("GEMINI_ROUTER_MODEL", "gemini-3.1-flash-lite")
 
 # ------
 # RAG
@@ -30,7 +28,7 @@ GEMINI_ROUTER_MODEL: str    = os.getenv("GEMINI_ROUTER_MODEL", "gemini-3.1-flash
 DOCUMENTS_PATH: Path    = Path(os.getenv("DOCUMENTS_PATH", "../documents")).resolve()
 FAISS_INDEX_PATH: Path  = Path(os.getenv("FAISS_INDEX_PATH", "./faiss_index")).resolve()
 EMBEDDINGS_MODEL: str   = os.getenv("EMBEDDINGS_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-CHUNK_SIZE: int         = int(os.getenv("CHUNK_SIZE", 500))
+CHUNK_SIZE: int         = int(os.getenv("CHUNK_SIZE", 300))
 CHUNK_OVERLAP: int      = int(os.getenv("CHUNK_OVERLAP", 50))
 
 # ------
