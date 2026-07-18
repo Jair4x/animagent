@@ -7,12 +7,12 @@ const emit = defineEmits<{
     send: [query: string, provider: Provider, geminiKey: string | null]
 }>();
 
-const query             = ref("")
-const provider          = ref<Provider>("groq")
-const geminiKey         = ref<string | null>(null)
-const geminiConfigured  = ref(false)
-const showModal         = ref(false)
-const isLoading         = defineModel<boolean>("loading")
+let query             = ref("")
+let provider          = ref<Provider>("groq")
+let geminiKey         = ref<string | null>(null)
+let geminiConfigured  = ref(false)
+let showModal         = ref(false)
+let isLoading         = defineModel<boolean>("loading")
 
 const providers = [
     { value: "groq",    label: "Groq" },
