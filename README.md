@@ -122,8 +122,10 @@ animagent/
 │   │   ├── integration         # Test de integración (flujo de agente completo)
 │   │   └── unit                # Tests unitarios (configuración, loader, retriever, router)
 │   │
+│   ├── .env.example
 │   ├── config.py               # Variables de entorno y configuración global
 │   ├── main.py                 # Punto de entrada del servidor
+│   ├── Dockerfile              # Configuración docker backend
 │   └── requirements.txt
 │
 ├── frontend/
@@ -138,10 +140,13 @@ animagent/
 │   │   └── services/
 │   │       └── api.ts          # Llamadas al backend
 │   ├── astro.config.mjs
+│   ├── .env.example
+│   ├── Dockerfile              # Configuración docker frontend
 │   └── package.json
 │
-├── .env.example                # Template de variables de entorno
 ├── .gitignore
+├── docker-compose.yml
+├── LICENSE
 └── README.md
 ```
 
@@ -197,6 +202,35 @@ Recuerda **editar el .env con tus API keys y parámetros**.
 
 ```bash
 python main.py
+```
+
+## 🐳︲Docker
+
+### Requisitos previos
+
+- Docker
+- Docker Compose
+
+### 1. Configurar variables de entorno
+
+```bash
+cp .env.example.env
+```
+
+Edita el `.env` con tus API keys. Para producción, cambia también `HOST` a `0.0.0.0` y `FRONTEND_URL` a la URL pública del servidor.
+
+### 2. Armar y levantar los contenedores
+
+```bash
+docker compose up --build
+```
+
+El backend estará disponible en `http://localhost:8000` y el frontend en `http://localhost:4321`.
+
+### 3. Detener los contenedores
+
+```bash
+docker compose down
 ```
 
 ## 🧪︲Tests
