@@ -33,6 +33,33 @@ Desarrollado como proyecto de la segunda etapa Oracle ONE 2026, ÁnimAgent combi
 - **Arquitectura preparada para Docker:** contenedorización del backend para facilitar el despliegue y la portabilidad.
 - **API key configurable por el usuario:** el usuario puede ingresar su propia API key de Google Gemini desde la interfaz; de lo contrario, el sistema utiliza Groq automáticamente.
 
+<!-- Capturas de la interfaz y funcionamiento -->
+## 🖼️︲Capturas
+
+A continuación, varias capturas de pantalla de la interfaz y el agente en acción.
+
+### Interfaz
+
+![Interfaz](./assets/Screenshot_1.png)
+
+### Modal de cambio de proveedor a Gemini
+
+_Este modal aparece una vez cuando eliges cambiar a Gemini, y después cuando presionas el botón de cambiar API key_
+
+![Modal](./assets/Screenshot_2.png)
+
+### Pregunta sobre documentación (PDF)
+
+![Pregunta: "¿Qué programas tiene la institución?" Respuesta: "La institución ofrece dos programas: Bachillerato y FINEST."](./assets/Screenshot_3.png)
+
+### Pregunta sobre horarios (CSV)
+
+![Pregunta: "¿Qué días tiene el grupo A de FINEST la materia Desarrollo Personal?" Respuesta: "Los jueves de 18:00 a 19:20"](./assets/Screenshot_4.png)
+
+### Preguntas irrelevantes o sin datos existentes
+
+![Pregunta 1: "¿Cuál es el color favorito del director?" Respuesta: "Lo siento, pero no tengo esa información. Como asistente, mi trabajo es proporcionar información oficial y relevante sobre la institución." / Pregunta 2: "¿Qué días tiene FINEST base de datos?" Respuesta 2: "Lo siento, pero no encontré información sobre esos horarios de clase."](./assets/Screenshot_5.png)
+
 <!-- Arquitectura del sistema -->
 ## ⚙️︲Arquitectura y flujo
 
@@ -150,6 +177,7 @@ animagent/
 └── README.md
 ```
 
+<!-- Instalación del Proyecto -->
 ## 🚀︲Instalación y uso
 
 ### Requisitos previos
@@ -204,6 +232,7 @@ Recuerda **editar el .env con tus API keys y parámetros**.
 python main.py
 ```
 
+<!-- Docker -->
 ## 🐳︲Docker
 
 ### Requisitos previos
@@ -233,6 +262,7 @@ El backend estará disponible en `http://localhost:8000` y el frontend en `http:
 docker compose down
 ```
 
+<!-- Tests -->
 ## 🧪︲Tests
 
 Los tests están organizados en dos categorías: unitarios e integración.
@@ -243,13 +273,13 @@ cd backend
 python -m pytest tests/ -v
 ```
 
-## Solo unitarios
+### Solo unitarios
 
 ```bash
 python -m pytest tests/unit/ -v
 ```
 
-## Solo integración
+### Solo integración
 
 ```bash
 python -m pytest tests/integration/ -v
