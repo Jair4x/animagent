@@ -16,13 +16,13 @@
 
 ÁnimAgent es un agente de inteligencia artificial diseñado para responder preguntas sobre la documentación de un instituto. A partir de documentos reales como reglamentos, horarios, políticas de becas y preguntas frecuentes, el agente recupera información relevante y genera respuestas claras y confiables, sin alucinar datos que no estén en la fuente.
 
-Desarrollado como proyecto de la segunda etapa Oracle ONE 2026, ÁnimAgent combina técnicas modernas de RAG (Generación Aumentada por Recuperación) con un agente inteligente basado en LangGraph, capaz de enrutar cada consulta al conjunto de documentos más adecuado antes de responder.
+Desarrollado como proyecto de la segunda etapa Oracle ONE 2026, ÁnimAgent combina técnicas modernas de RAG (Generación Aumentada por Recuperación) con un agente inteligente basado en LangGraph, capaz de decidir qué herramienta usar para recuperar la información más relevante antes de responder.
 
 <!-- Características principales -->
 ## 💫︲Características principales
 
 - **RAG (Generación Aumentada por Recuperación):** las respuestas se generan a partir de fragmentos reales de la documentación institucional, no de conocimiento genérico del modelo.
-- **Agente con routing inteligente:** basado en LangGraph, el agente analiza cada pregunta y decide qué colección de documentos consultar antes de responder.
+- **Agente ReAct con herramientas:** basado en LangGraph, el agente razona sobre cada pregunta y decide qué herramienta invocar: búsqueda semántica en documentos PDF o búsqueda estructurada en horarios CSV.
 - **Fragmentación semántica de documentos:** los documentos se dividen en chunks con superposición para preservar el contexto entre fragmentos.
 - **Embeddings con HuggingFace:** generación de representaciones vectoriales de los textos usando modelos de embeddings de HuggingFace.
 - **Base de datos vectorial FAISS:** almacenamiento y búsqueda eficiente de embeddings para recuperación de fragmentos relevantes.
@@ -38,7 +38,7 @@ Desarrollado como proyecto de la segunda etapa Oracle ONE 2026, ÁnimAgent combi
 
 ### Arquitectura del sistema
 
-ÁnimAgent está compuesto por tres capas principales: el frontend de chat, el backend con FastAPI y el agente LangGraph con RAG.
+ÁnimAgent está compuesto por tres capas principales: el frontend de chat, el backend con FastAPI y un agente ReAct basado en LangGraph con RAG.
 
 ```mermaid
 graph TD
@@ -49,13 +49,13 @@ graph TD
     subgraph Backend
         B[FastAPI\nAPI REST]
         C[Model Factory\nGroq / Gemini]
-        subgraph Agente LangGraph
-            D[Router]
-            E[Retriever]
-            F[Sintetizador]
+        subgraph Agente ReAct LangGraph
+            D[LLM\nRazonamiento]
+            E[Tool: search_documents\nFAISS]
+            F[Tool: search_timetables\nPandas CSV]
         end
         subgraph RAG
-            G[Loader\nPDF + CSV]
+            G[Loader\nPDF]
             H[Embeddings\nHuggingFace]
             I[(FAISS\nVector Store)]
         end
@@ -68,9 +68,9 @@ graph TD
     A <-->|HTTP| B
     B --> C
     C --> D
-    D --> E
+    D -->|elige tool| E
+    D -->|elige tool| F
     E --> I
-    I --> F
     G --> H --> I
     J --> G
 ```
@@ -78,20 +78,19 @@ graph TD
 ### Flujo de una consulta
 
 1. El usuario escribe una pregunta en el chat
-2. El frontend envía un `POST /api/chat` con la query y opcionalmente el provider y una API key de Gemini en el header
-3. FastAPI instancia el modelo correspondiente (Gemini o Groq) y construye el grafo del agente
-4. El nodo **Router** analiza la pregunta y la clasifica en una categoría (`horarios`, `convivencia`, `aranceles`, `faq` o `general`)
-5. El nodo **Retriever** busca en el índice FAISS los fragmentos más relevantes de esa categoría
-6. El nodo **Sintetizador** recibe el contexto recuperado y genera la respuesta final citando la fuente
-7. La respuesta vuelve al frontend y se muestra en el chat
+2. El frontend envía un `POST /api/chat` con la query, el provider elegido y opcionalmente una API key de Gemini en el header
+3. FastAPI instancia el modelo correspondiente (Gemini o Groq) y construye el agente
+4. El agente ReAct analiza la pregunta y decide qué herramienta usar: `search_documents` para PDFs o `search_timetables` para horarios
+5. La herramienta recupera la información relevante y se la devuelve al agente
+6. El agente evalúa si tiene suficiente información para responder o si necesita llamar otra herramienta
+7. Una vez satisfecho, genera la respuesta final y la devuelve al frontend
 
 ### Componentes del agente
 
-- `router.py` — clasifica la query usando el LLM
-- `retriever.py` — busca fragmentos relevantes en FAISS filtrados por categoría
-- `nodes.py` — lógica de cada nodo del grafo
-- `graph.py` — ensambla el flujo con LangGraph
+- `tools.py` — define las dos herramientas del agente: búsqueda semántica en documentos (FAISS) y búsqueda estructurada en horarios (Pandas)
+- `graph.py` — construye el agente ReAct con `create_react_agent` de LangGraph
 - `factory.py` — instancia Gemini o Groq según el provider elegido
+- `rag/` — carga documentos, genera embeddings y gestiona el índice FAISS
 
 <!-- Estructura del Proyecto -->
 ## 📂︲Estructura del proyecto
@@ -106,9 +105,7 @@ animagent/
 ├── backend/
 │   ├── agent/
 │   │   ├── graph.py            # StateGraph de LangGraph (nodos y conexiones)
-│   │   ├── nodes.py            # Lógica de cada nodo del agente
-│   │   ├── router.py           # Lógica de routing entre colecciones
-│   │   └── state.py            # Definición del estado que viaja por el grafo
+│   │   └── tools.py            # Definición de herramientas del agente (buscar en PDF y CSV)
 │   │
 │   ├── rag/
 │   │   ├── loader.py           # Carga y parseo de PDFs y CSVs
@@ -267,7 +264,7 @@ python -m pytest tests/integration/ -v
 <!-- Roadmap -->
 ## 🛤️︲Roadmap
 
-### ⌛｜Versión 1.0
+### ✅｜Versión 1.0
 
 - Agente RAG funcional con LangGraph y routing por tipo de documento
 - Indexación de todos los documentos institucionales (PDFs y CSVs)
@@ -279,9 +276,9 @@ python -m pytest tests/integration/ -v
 - Deploy en OCI Compute
 - Arquitectura contenedorizada con Docker
 - README con descripción, arquitectura y ejemplos de uso
-- Tests automatizados del agente y del backend (parte de v1.2, pasado a v1.0)
+- Tests automatizados del agente y del backend
 
-### 🚧｜Versión 1.1
+### ⌛｜Versión 1.1
 
 - Historial de conversación por sesión (memoria de contexto)
 - Indicador visual de qué documento consultó el agente en cada respuesta
