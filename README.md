@@ -60,6 +60,12 @@ _Este modal aparece una vez cuando eliges cambiar a Gemini, y después cuando pr
 
 ![Pregunta 1: "¿Cuál es el color favorito del director?" Respuesta: "Lo siento, pero no tengo esa información. Como asistente, mi trabajo es proporcionar información oficial y relevante sobre la institución." / Pregunta 2: "¿Qué días tiene FINEST base de datos?" Respuesta 2: "Lo siento, pero no encontré información sobre esos horarios de clase."](./assets/Screenshot_5.png)
 
+### Deployment del agente
+
+El agente está disponible en [animagent.duckdns.org](https://animagent.duckdns.org/). El despliegue se realizó en una **Compute Instance** de **Oracle Cloud Infrastructure (OCI)** usando **Docker Compose** para gestionar los contenedores del frontend y backend.
+
+![Ventana del panel del Compute instance de Oracle Cloud Infrastructure con una terminal superpuesta conectada a la máquina y mostrando los dos contenedores corriendo en docker compose](./assets/Screenshot_6.png)
+
 <!-- Arquitectura del sistema -->
 ## ⚙️︲Arquitectura y flujo
 
