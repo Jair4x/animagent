@@ -6,8 +6,8 @@
 <h3 align="center">Un chatbot IA de conocimiento institucional</h3>
 
 <div align="center">
-    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-blue">
-    <img src="https://img.shields.io/badge/Oracle%20ONE%202026-8A2BE2?logo=livechat&logoColor=white&link=https%3A%2F%2Fwww.oracle.com%2Flatam%2Feducation%2Foracle-next-education">
+    <img src="https://img.shields.io/badge/STATUS-ONLINE-green">
+    <img src="https://img.shields.io/badge/Oracle%20ONE%202026-8A2BE2?logo=livechat&logoColor=white">
     <img src="https://img.shields.io/badge/LangChain-blue?logo=langchain">
 </div>
 
