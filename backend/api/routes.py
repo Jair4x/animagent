@@ -35,8 +35,9 @@ async def chat(
     llm         = get_llm(provider=body.provider, gemini_key=x_gemini_key)
     agent       = build_graph(llm, index_store.index)
 
+    # body.history always gets sent, but just in case a dark magical mage decides to NOT send it...
     if body.history:
-        messages = body.history + [{"role": "user", "content": body.query}]
+        messages = body.history
     else:
         messages = [{"role": "user", "content": body.query}]
 
