@@ -348,7 +348,7 @@ python -m pytest tests/integration/ -v
 - README con descripción, arquitectura y ejemplos de uso
 - Tests automatizados del agente y del backend
 
-### ⌛｜Versión 1.1
+### ✅｜Versión 1.1
 
 - Historial de conversación por sesión (memoria de contexto)
 - Indicador visual de qué documento consultó el agente en cada respuesta
