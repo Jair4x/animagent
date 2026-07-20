@@ -41,7 +41,7 @@ async function onSend(query: string, provider: Provider, geminiKey: string | nul
             timestamp:  new Date(),
         });
     } catch (error: any) {
-        const status = error?.status || error?.response?.status
+        const status = error?.status || error?.response?.status;
 
         messages.value.push({
             id:         crypto.randomUUID(),
@@ -56,7 +56,7 @@ async function onSend(query: string, provider: Provider, geminiKey: string | nul
             showError("API key inválida. Revisa tu clave de Gemini/Groq.");
         } else if (status === 413 || status === 429) {
             showError("Límite de tokens alcanzado. Espera unos minutos o cambia de proveedor.");
-        } else if (status === 500) {
+        } else if (error?.message?.includes("NetworkError") || error?.message?.includes("Failed to fetch")) {
             showError("Error interno del servidor. El agente no pudo procesar la consulta.");
         } else if (error?.name === "AbortError" || error?.message?.includes("timeout")) {
             showError("El agente tardó demasiado en responder. Intenta de nuevo.");
