@@ -6,12 +6,13 @@ import Toast from "./Toast.vue";
 import { sendMessage } from "../services/api.ts";
 import type { Message, Provider } from "../types/chat";
 import { useToast } from "../services/useToast.ts";
+import { ApiError } from "../services/errors.ts";
 
 const messages  = ref<Message[]>([])
 const loading = ref(false)
 const { error: showError } = useToast();
 
-async function onSend(query: string, provider: Provider, geminiKey: string | null) {
+async function onSend(query: string, provider: Provider, apiKey: string | null) {
     messages.value.push({
         id:         crypto.randomUUID(),
         role:       "user",
@@ -30,7 +31,7 @@ async function onSend(query: string, provider: Provider, geminiKey: string | nul
         }));
 
     try {
-        const response = await sendMessage({ query, provider, geminiKey: geminiKey ?? undefined, history });
+        const response = await sendMessage({ query, provider, apiKey: apiKey ?? undefined, history });
 
         messages.value.push({
             id:         crypto.randomUUID(),
@@ -40,9 +41,7 @@ async function onSend(query: string, provider: Provider, geminiKey: string | nul
             category:   response.category   ?? undefined,
             timestamp:  new Date(),
         });
-    } catch (error: any) {
-        const status = error?.status || error?.response?.status;
-
+    } catch (error) {
         messages.value.push({
             id:         crypto.randomUUID(),
             role:       "agent",
@@ -50,18 +49,32 @@ async function onSend(query: string, provider: Provider, geminiKey: string | nul
             timestamp:  new Date(),
         });
 
-        if (!navigator.onLine) {
+        if (error instanceof ApiError) {
+            switch (error.status) {
+                case 400:
+                    showError(error.message);
+                    break;
+
+                case 401:
+                    showError("API key inválida. Revisa la clave ingresada.");
+                    break;
+
+                case 413:
+                case 429:
+                    showError("Límite de tokens alcanzado. Espera unos minutos o cambia de proveedor.");
+                    break;
+
+                default:
+                    showError("No se pudo conectar con el agente.");
+            }
+        } else if (!navigator.onLine) {
             showError("Sin conexión a internet. Verifica tu red e intenta de nuevo.");
-        } else if (status === 401) {
-            showError("API key inválida. Revisa tu clave de Gemini/Groq.");
-        } else if (status === 413 || status === 429) {
-            showError("Límite de tokens alcanzado. Espera unos minutos o cambia de proveedor.");
         } else if (error?.message?.includes("NetworkError") || error?.message?.includes("Failed to fetch")) {
             showError("Error interno del servidor. El agente no pudo procesar la consulta.");
         } else if (error?.name === "AbortError" || error?.message?.includes("timeout")) {
             showError("El agente tardó demasiado en responder. Intenta de nuevo.");
         } else {
-            showError("No se pudo conectar con el agente. Verifica que el servidor esté activo.")
+            showError("No se pudo conectar con el agente.");
         }
 
     } finally {

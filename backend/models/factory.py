@@ -3,6 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI
 from langchain_cohere import ChatCohere
 from langchain_core.language_models import BaseChatModel
+from fastapi import HTTPException
 import config
 
 def get_llm(
@@ -33,7 +34,10 @@ def get_llm(
     if resolved_provider == "gemini":
         key = gemini_key or config.GEMINI_API_KEY
         if not key:
-            raise ValueError("[Factory] No Gemini API key available. Set up GEMINI_API_KEY in .env config or send your own API key.")
+            raise HTTPException(
+                status_code=400,
+                detail="API key de Google Gemini no configurada en la app. Provee tu propia API key para utilizar este proveedor."
+            )
         
         return ChatGoogleGenerativeAI(
             model=config.GEMINI_MODEL_NAME,
@@ -44,7 +48,10 @@ def get_llm(
     elif resolved_provider == "openai":
         key = openai_key or config.OPENAI_API_KEY
         if not key:
-            raise ValueError("[Factory] No OpenAI API key available. Set up OPENAI_API_KEY in .env config or send your own API key.")
+            raise HTTPException(
+                status_code=400,
+                detail="API key de OpenAI no configurada en la app. Provee tu propia API key para utilizar este proveedor."
+            )
         
         return ChatOpenAI(
             model=config.OPENAI_MODEL_NAME,
@@ -55,7 +62,10 @@ def get_llm(
     elif resolved_provider == "cohere":
         key = cohere_key or config.COHERE_API_KEY
         if not key:
-            raise ValueError("[Factory] No COHERE AI API key available. Set up COHERE_API_KEY in .env config or send your own API key.")
+            raise HTTPException(
+                status_code=400,
+                detail="API key de Cohere AI no configurada en la app. Provee tu propia API key para utilizar este proveedor."
+            )
         
         return ChatCohere(
             model=config.COHERE_MODEL_NAME,
@@ -66,7 +76,10 @@ def get_llm(
     elif resolved_provider == "groq":
         key = groq_key or config.GROQ_API_KEY
         if not key:
-            raise ValueError("[Factory] No Groq API key available. Set up GROQ_API_KEY in .env config or send your own API key.")
+            raise HTTPException(
+                status_code=400,
+                detail="API key de Groq no configurada en la app. Provee tu propia API key para utilizar este proveedor."
+            )
 
         return ChatGroq(
             model=config.GROQ_MODEL_NAME,
@@ -77,5 +90,5 @@ def get_llm(
     
     raise ValueError(
         f"[Factory] Unkown provider '{resolved_provider}'."
-        "Supported providers: gemini, openai, groq."
+        "Supported providers: gemini, openai, groq, cohere."
     )

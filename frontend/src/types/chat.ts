@@ -16,7 +16,7 @@ export interface HistoryMessage {
 export interface ChatRequest {
     query:      string
     provider:   Provider
-    geminiKey?: string
+    apiKey?:    string
     history:    HistoryMessage[]
 }
 

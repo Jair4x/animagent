@@ -1,4 +1,5 @@
 import type { ChatRequest, ChatResponse } from "../types/chat";
+import { ApiError } from "./errors";
 
 const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost:8000"
 
@@ -7,8 +8,8 @@ export async function sendMessage(request: ChatRequest): Promise<ChatResponse> {
         "Content-Type": "application/json",
     }
 
-    if (request.geminiKey) {
-        headers["X-Gemini-Key"] = request.geminiKey;
+    if (request.apiKey) {
+        headers["X-API-Key"] = request.apiKey;
     }
 
     const response = await fetch(`${API_URL}/api/chat`, {
@@ -22,9 +23,17 @@ export async function sendMessage(request: ChatRequest): Promise<ChatResponse> {
     });
 
     if (!response.ok) {
-        const error: any = new Error(`Error ${response.status}`);
-        error.status = response.status;
-        throw error
+        let detail: string | undefined;
+
+        try {
+            const data = await response.json();
+            detail = data.detail;
+        } catch { }
+
+        throw new ApiError(
+            response.status,
+            detail ?? `Error ${response.status}`
+        );
     }
 
     return response.json();
