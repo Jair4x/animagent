@@ -93,9 +93,9 @@ watch(
                 </div>
                 <div class="bg-[#1A1D26] border border-white/10 rounded-2xl rounded-bl-sm px-4 py-3">
                     <div class="flex gap-1 items-center">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-bounce[animation-relay:0ms]" />
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-bounce[animation-relay:150ms]" />
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-bounce[animation-relay:300ms]" />
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-bounce" />
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-bounce" />
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-bounce" />
                     </div>
                 </div>
             </div>
