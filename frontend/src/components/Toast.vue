@@ -29,11 +29,11 @@ const iconColors: Record<string, string> = {
             v-for="toast in toasts"
             :key="toast.id"
             :class="[
-                'flex items-start gap-3 px-4 py-3 rounded-xl border backdrop-blur-sm',
+                'flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-sm',
                 colors[toast.type]
             ]"
         >
-            <i :class="['ti text-base mt-1  shrink-0', icons[toast.type], iconColors[toast.type]]" />
+            <i :class="['ti text-base shrink-0', icons[toast.type], iconColors[toast.type]]" />
 
             <p class="text-sm flex-1 leading-relaxed">{{ toast.message }}</p>
 
