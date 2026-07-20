@@ -1,14 +1,16 @@
 from langchain_groq import ChatGroq
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI
+from langchain_cohere import ChatCohere
 from langchain_core.language_models import BaseChatModel
 import config
 
 def get_llm(
-        provider: str | None = None,
+        provider:   str | None = None,
         gemini_key: str | None = None,
         openai_key: str | None = None,
-        groq_key: str | None = None
+        cohere_key: str | None = None,
+        groq_key:   str | None = None
     ) -> BaseChatModel:
     """
     Instantiates and returns the language model to use.
@@ -17,7 +19,8 @@ def get_llm(
     - If no provider is set, `DEFAULT_PROVIDER` from .env config is used.  
     - If the provider is `'gemini'`, use the user API key or `GEMINI_API_KEY`.
     - If the provider is `'openai'`, use the user API key or `OPENAI_API_KEY`.
-    - If the provider is 'groq', use the user API key or `GROQ_API_KEY`.
+    - If the provider is `'cohere'`, use the user API key or `COHERE_API_KEY`.
+    - If the provider is `'groq'`, use the user API key or `GROQ_API_KEY`.
     
     ### Args
     #### `provider`
@@ -48,6 +51,17 @@ def get_llm(
             api_key=key,
             # reasoning_format="hidden", # Only add if the model supports it
             temperature=0.3
+        )
+    elif resolved_provider == "cohere":
+        key = cohere_key or config.COHERE_API_KEY
+        if not key:
+            raise ValueError("[Factory] No COHERE AI API key available. Set up COHERE_API_KEY in .env config or send your own API key.")
+        
+        return ChatCohere(
+            model=config.COHERE_MODEL_NAME,
+            cohere_api_key=key,
+            # reasoning_format="hidden", # Only add if the model supports it
+            temperature=0.3,
         )
     elif resolved_provider == "groq":
         key = groq_key or config.GROQ_API_KEY

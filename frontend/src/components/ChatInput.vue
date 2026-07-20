@@ -15,11 +15,13 @@ let apiKeys             = ref<Record<Provider, string | null>>({
     groq:   null,
     gemini: null,
     openai: null,
+    cohere: null,
 });
 let configuredProvider  = ref<Record<Provider, boolean>>({
     groq:   false,
     gemini: false,
     openai: false,
+    cohere: false,
 });
 const pendingProvider   = ref<Provider>("groq");
 
@@ -27,6 +29,7 @@ const providers = [
     { value: "groq",    label: "Groq" },
     { value: "gemini",  label: "Gemini" },
     { value: "openai",  label: "OpenAI" },
+    { value: "cohere",  label: "Cohere AI"},
 ];
 
 // When the user changes LLM provider

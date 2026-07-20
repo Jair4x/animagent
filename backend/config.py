@@ -25,6 +25,9 @@ GEMINI_MODEL_NAME: str      = os.getenv("GEMINI_MODEL_NAME", "gemini-3.5-flash")
 OPENAI_API_KEY: str         = os.getenv("OPENAI_API_KEY", "")
 OPENAI_MODEL_NAME: str      = os.getenv("OPENAI_MODEL_NAME", "gpt-4o-mini")
 
+COHERE_API_KEY: str         = os.getenv("COHERE_API_KEY", "")
+COHERE_MODEL_NAME: str      = os.getenv("COHERE_MODEL_NAME", "command-a-03-2025")
+
 # ------
 # RAG
 # ------

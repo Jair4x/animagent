@@ -7,7 +7,7 @@ const emit = defineEmits<{
 }>()
 
 const props = defineProps<{
-    provider: "gemini" | "openai" | "groq"
+    provider: "gemini" | "openai" | "groq" | "cohere"
 }>();
 
 const providerLabel = computed(() => {
@@ -20,6 +20,9 @@ const providerLabel = computed(() => {
 
         case "groq":
             return "Groq";
+
+        case "cohere":
+            return "Cohere AI";
     }
 });
 
