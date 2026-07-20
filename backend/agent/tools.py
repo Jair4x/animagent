@@ -56,10 +56,14 @@ def make_search_timetables_tool():
         if not csv_files:
             return "No se encontraron archivos de horarios."
         
+        VALID_PROGRAMS = ["finest", "bachillerato"]
+
         # Select CSV based on program
         csv_path = csv_files[0]
         if program:
             keyword = program.lower()
+            if keyword not in VALID_PROGRAMS:
+                return f"Programa inválido: '{program}'. Los programas disponibles son: FINEST, Bachillerato.\n__source__:none"
             for csv in csv_files:
                 if keyword in csv.stem.lower():
                     csv_path = csv
