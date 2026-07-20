@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.routes import router
 from rag.loader import load_all_documents
 from rag.embeddings import load_or_build_index
+from rag.watcher import start_watcher
 import index_store
 import config
 
@@ -18,8 +19,11 @@ async def lifespan(app: FastAPI):
     print("[ÁnimAgent] Initializing server...")
     documents           = load_all_documents()
     index_store.index   = load_or_build_index(documents)
+    observer            = start_watcher()
     print("[ÁnimAgent] Index done. Server online.")
     yield
+    observer.stop()
+    observer.join()
     print("[ÁnimAgent] Shutting down...")
 
 app = FastAPI(
