@@ -334,7 +334,7 @@ python -m pytest tests/integration/ -v
 <!-- Roadmap -->
 ## 🛤️︲Roadmap
 
-### ✅｜Versión 1.0
+### ✅｜Versión 1.0 - Base funcional
 
 - Agente RAG funcional con LangGraph y routing por tipo de documento
 - Indexación de todos los documentos institucionales (PDFs y CSVs)
@@ -348,22 +348,15 @@ python -m pytest tests/integration/ -v
 - README con descripción, arquitectura y ejemplos de uso
 - Tests automatizados del agente y del backend
 
-### ✅｜Versión 1.1
+### ✅｜Versión 1.1 - Experiencia de usuario
 
 - Historial de conversación por sesión (memoria de contexto)
 - Indicador visual de qué documento consultó el agente en cada respuesta
 - Mejoras de UI: animaciones, estados de carga, manejo de errores visible
 - Soporte para modelos adicionales (OpenAI, Cohere)
 
-### 🚧｜Versión 1.2
+### ⌛｜Versión 1.2 - Operaciones
 
-- Carga de documentos nuevos sin necesidad de reiniciar el servidor (hot reload del índice)
-- Sistema de feedback por respuesta (pulgar arriba / abajo)
-- Logging de consultas para análisis de uso
-
-### 🚧｜Versión 2.0
-
-- Soporte multiidioma (español e inglés)
-- Panel de administración para cargar y gestionar documentos desde la interfaz
-- Autenticación de usuarios (estudiantes vs. administrativos)
-- Respuestas diferenciadas según el perfil del usuario autenticado
+- Hot reload del índice FAISS al haber cambios
+- Logging de consultas con feedback
+- Endpoint de administración para subir documentos sin acceso al servidor
