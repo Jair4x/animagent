@@ -8,10 +8,16 @@ export interface Message {
     timestamp:  Date
 }
 
+export interface HistoryMessage {
+    role:       "user" | "assistant"
+    content:    string
+}
+
 export interface ChatRequest {
     query:      string
     provider:   Provider
     geminiKey?: string
+    history:    HistoryMessage[]
 }
 
 export interface ChatResponse {

@@ -21,8 +21,16 @@ async function onSend(query: string, provider: Provider, geminiKey: string | nul
 
     loading.value = true;
 
+    const history = messages.value
+        .slice(-10)
+        .filter(m => m.role === "user" || m.role === "agent")
+        .map(m => ({
+            role:       m.role === "agent" ? "assistant" : "user" as "user" | "assistant",
+            content:    m.content,
+        }));
+
     try {
-        const response = await sendMessage({ query, provider, geminiKey: geminiKey ?? undefined });
+        const response = await sendMessage({ query, provider, geminiKey: geminiKey ?? undefined, history });
 
         messages.value.push({
             id:         crypto.randomUUID(),

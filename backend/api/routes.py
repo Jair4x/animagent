@@ -8,7 +8,8 @@ router = APIRouter()
 
 class ChatRequest(BaseModel):
     query:      str
-    provider:   str | None
+    provider:   str | None = None
+    history:    list[dict] = []
 
 class ChatResponse(BaseModel):
     response:   str
@@ -34,7 +35,12 @@ async def chat(
     llm         = get_llm(provider=body.provider, gemini_key=x_gemini_key)
     agent       = build_graph(llm, index_store.index)
 
-    result = agent.invoke({"messages": [{"role": "user", "content": body.query}]})
+    if body.history:
+        messages = body.history + [{"role": "user", "content": body.query}]
+    else:
+        messages = [{"role": "user", "content": body.query}]
+
+    result      = agent.invoke({"messages": messages})
     messages    = result["messages"]
 
     source      = None

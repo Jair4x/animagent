@@ -15,13 +15,16 @@ export async function sendMessage(request: ChatRequest): Promise<ChatResponse> {
         method: "POST",
         headers,
         body: JSON.stringify({
-            query:      request.query,
-            provider:   request.provider,
+            query: request.query,
+            provider: request.provider,
+            history: request.history,
         }),
-    })
+    });
 
     if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
+        const error: any = new Error(`Error ${response.status}`);
+        error.status = response.status;
+        throw error
     }
 
     return response.json();
