@@ -19,23 +19,29 @@ class ChatResponse(BaseModel):
 @router.post("/chat", response_model=ChatResponse)
 async def chat(
     body:           ChatRequest,
-    x_gemini_key:   str | None = Header(default=None)
+    x_api_key:      str | None = Header(default=None)
 ):
     """
     Main endpoint of the agent.
 
     ### Args
     #### `body`
-    The user query and LLM provider.
-    #### `x_gemini_key`
-    Google Gemini API key sent via HTTP header.
+    The user query and selected LLM provider.
+    #### `x_api_key`
+    Optional API key for the selected provider, sent via HTTP header.
+
     ### Returns
     Agent response and source document.
     """
-    llm         = get_llm(provider=body.provider, gemini_key=x_gemini_key)
+    llm         = get_llm(
+                    provider=body.provider,
+                    gemini_key=x_api_key,
+                    openai_key=x_api_key,
+                    groq_key=x_api_key,
+                )
     agent       = build_graph(llm, index_store.index)
 
-    # body.history always gets sent, but just in case a dark magical mage decides to NOT send it...
+    # body.history always gets sent, but just in case a dark mage decides to NOT send it...
     if body.history:
         messages = body.history
     else:

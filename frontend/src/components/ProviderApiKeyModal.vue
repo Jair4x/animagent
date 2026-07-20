@@ -1,19 +1,36 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const emit = defineEmits<{
     confirm:    [key: string | null]
     cancel:     []
 }>()
 
+const props = defineProps<{
+    provider: "gemini" | "openai" | "groq"
+}>();
+
+const providerLabel = computed(() => {
+    switch (props.provider) {
+        case "gemini":
+            return "Google Gemini";
+
+        case "openai":
+            return "OpenAI";
+
+        case "groq":
+            return "Groq";
+    }
+});
+
 const apiKey = ref("");
 
-// Use the user's set Gemini API key
+// Use the user's set provider API key
 function useOwn() {
     emit("confirm", apiKey.value.trim() || null)
 }
 
-// Use the app's Gemini API key
+// Use the app's provider API key
 function useApp() {
     emit("confirm", null)
 }
@@ -23,13 +40,13 @@ function useApp() {
     <div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
         <div class="bg-[#1a1d26] border border-white/10 rounded-xl p-6 w-full max-w-md">
 
-            <h2 class="text-white font-medium text-base mb-1">Usando Google Gemini</h2>
+            <h2 class="text-white font-medium text-base mb-1">Usando {{providerLabel}}</h2>
             <p class="text-gray-400 text-sm mb-5 leading-relaxed">
                 Puedes usar la API key de la aplicación, pero puede no estar disponible
                 o haber llegado a su límite diario. Si tienes una propia, ingrésala aquí.
             </p>
 
-            <label class="block text-xs text-gray-500 mb-1.5">Tu API key de Gemini (opcional)</label>
+            <label class="block text-xs text-gray-500 mb-1.5">Tu API key de {{providerLabel}} (opcional)</label>
             <input
                 v-model="apiKey"
                 type="password"

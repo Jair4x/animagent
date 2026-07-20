@@ -1,50 +1,59 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import ApiKeyModal from './ApiKeyModal.vue';
+import ProviderApiKeyModal from './ProviderApiKeyModal.vue';
 import type { Provider } from '../types/chat';
 
 const emit = defineEmits<{
-    send: [query: string, provider: Provider, geminiKey: string | null]
+    send: [query: string, provider: Provider, apiKey: string | null]
 }>();
 
-let query             = ref("")
-let provider          = ref<Provider>("groq")
-let geminiKey         = ref<string | null>(null)
-let geminiConfigured  = ref(false)
-let showModal         = ref(false)
-let isLoading         = defineModel<boolean>("loading")
+let query               = ref("");
+let provider            = ref<Provider>("groq");
+let showModal           = ref(false);
+let isLoading           = defineModel<boolean>("loading");
+let apiKeys             = ref<Record<Provider, string | null>>({
+    groq:   null,
+    gemini: null,
+    openai: null,
+});
+let configuredProvider  = ref<Record<Provider, boolean>>({
+    groq:   false,
+    gemini: false,
+    openai: false,
+});
+const pendingProvider   = ref<Provider>("groq");
 
 const providers = [
     { value: "groq",    label: "Groq" },
-    { value: "gemini",  label: "Gemini" }
+    { value: "gemini",  label: "Gemini" },
+    { value: "openai",  label: "OpenAI" },
 ];
 
 // When the user changes LLM provider
 function onProviderChange(value: Provider) {
-    if (value === "gemini" && !geminiConfigured.value) {
-        showModal.value = true
-    } else {
-        provider.value = value
+    if (!configuredProvider.value[value]) {
+        pendingProvider.value = value;
+        showModal.value = true;
+        return;
     }
+
+    provider.value = value;
 }
 
 // APIKeyModal functions
 function onModalConfirm(key: string | null) {
-    provider.value = "gemini"
-    geminiKey.value = key
-    showModal.value = false
-}
+    apiKeys.value[pendingProvider.value] = key;
+    configuredProvider.value[pendingProvider.value] = true;
 
-function onModalCancel() {
-    provider.value = "groq"
-    showModal.value = false
+    provider.value = pendingProvider.value;
+    showModal.value = false;
 }
 
 // When sending message
 function onSend() {
     const q = query.value.trim()
     if (!q || isLoading.value) return
-    emit("send", q, provider.value, geminiKey.value)
+    emit("send", q, provider.value, apiKeys.value[provider.value])
     query.value = ""
 }
 
@@ -79,9 +88,9 @@ function onKeydown(e: KeyboardEvent) {
                 </button>
             </div>
 
-            <template v-if="provider === 'gemini'">
+            <template v-if="provider">
                 <span class="text-xs text-gray-500">
-                    · {{ geminiKey ? "key propia" : "key de la app" }}
+                    · {{ apiKeys[provider] ? "key propia" : "key de la app" }}
                 </span>
                 <button
                     @click="showModal = true"
@@ -117,10 +126,11 @@ function onKeydown(e: KeyboardEvent) {
         </p>
     </div>
 
-    <ApiKeyModal
+    <ProviderApiKeyModal
         v-if="showModal"
+        :provider="pendingProvider"
         @confirm="onModalConfirm"
-        @cancel="onModalCancel"
+        @cancel="showModal = false"
     />
 
 </template>
