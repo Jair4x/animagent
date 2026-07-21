@@ -17,7 +17,7 @@ FRONTEND_URL: str   = os.getenv("FRONTEND_URL", "http://localhost:4321")
 DEFAULT_PROVIDER: str       = os.getenv("DEFAULT_PROVIDER", "groq")
 
 GROQ_API_KEY: str           = os.getenv("GROQ_API_KEY", "")
-GROQ_MODEL_NAME: str        = os.getenv("GROQ_MODEL_NAME", "llama-3.1-8b-instant")
+GROQ_MODEL_NAME: str        = os.getenv("GROQ_MODEL_NAME", "llama-3.3-70b-versatile")
 
 GEMINI_API_KEY: str         = os.getenv("GEMINI_API_KEY", "")
 GEMINI_MODEL_NAME: str      = os.getenv("GEMINI_MODEL_NAME", "gemini-3.5-flash")
