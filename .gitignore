@@ -20,4 +20,9 @@ node_modules/
 
 # vscode setting folder
 .vscode/
+
+# Virtual Environment
 .venv/
+
+# Logs
+logs/
