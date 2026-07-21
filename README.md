@@ -131,54 +131,61 @@ graph TD
 ```text
 animagent/
 │
-├── assets/                     # Imágenes, logo y archivos estáticos del proyecto
+├── assets/                                 # Imágenes, logo y archivos estáticos del proyecto
 │
-├── documents/                  # Documentación de la institución, con subcarpetas por categoría y archivos PDF/CSV
+├── documents/                              # Documentación de la institución, con subcarpetas por categoría y archivos PDF/CSV
 │
 ├── backend/
 │   ├── agent/
-│   │   ├── graph.py            # StateGraph de LangGraph (nodos y conexiones)
-│   │   └── tools.py            # Definición de herramientas del agente (buscar en PDF y CSV)
+│   │   ├── graph.py                        # StateGraph de LangGraph (nodos y conexiones)
+│   │   └── tools.py                        # Definición de herramientas del agente (buscar en PDF y CSV)
 │   │
 │   ├── rag/
-│   │   ├── loader.py           # Carga y parseo de PDFs y CSVs
-│   │   ├── embeddings.py       # Generación de embeddings e índice FAISS
-│   │   └── retriever.py        # Búsqueda de fragmentos relevantes
+│   │   ├── loader.py                       # Carga y parseo de PDFs y CSVs
+│   │   ├── embeddings.py                   # Generación de embeddings e índice FAISS
+│   │   ├── retriever.py                    # Búsqueda de fragmentos relevantes
+│   │   └── watcher.py                      # Observador de cambios a los documentos (hot reload)
 │   │
 │   ├── models/
-│   │   └── factory.py          # Instancia Gemini o Groq según disponibilidad
+│   │   └── factory.py                      # Instancia Gemini o Groq según disponibilidad
 │   │
 │   ├── api/
-│   │   └── routes.py           # Endpoints FastAPI
+│   │   └── routes.py                       # Endpoints FastAPI
+│   │
+│   ├── query_logging/
+│   │   └── query_logger.py                 # Logging de las interacciones para analíticas
 │   │
 │   ├── tests/
-│   │   ├── integration         # Test de integración (flujo de agente completo)
-│   │   └── unit                # Tests unitarios (configuración, loader, retriever, router)
+│   │   ├── integration                     # Test de integración (flujo de agente completo)
+│   │   └── unit                            # Tests unitarios (configuración, loader, retriever, tools)
 │   │
 │   ├── .env.example
-│   ├── config.py               # Variables de entorno y configuración global
-│   ├── main.py                 # Punto de entrada del servidor
-│   ├── Dockerfile              # Configuración docker backend
+│   ├── config.py                           # Variables de entorno y configuración global
+│   ├── main.py                             # Punto de entrada del servidor
+│   ├── Dockerfile                          # Configuración docker backend
 │   └── requirements.txt
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── Chat.vue        # Combina ChatWindow y ChatInput
-│   │   │   ├── ChatWindow.vue  # Ventana de mensajes
-│   │   │   ├── ChatInput.vue   # Input del usuario
-│   │   │   └── ApiKeyModal.vue # Modal para ingresar API key de Gemini propia
+│   │   │   ├── Chat.vue                    # Combina ChatWindow y ChatInput
+│   │   │   ├── ChatInput.vue               # Input del usuario
+│   │   │   ├── ChatWindow.vue              # Ventana de mensajes
+│   │   │   ├── Toast.vue                   # Modal de notificaciones
+│   │   │   └── ProviderApiKeyModal.vue     # Modal para ingresar API key propia de un proveedor de LLM
 │   │   ├── pages/
-│   │   │   └── index.astro     # Página principal
+│   │   │   └── index.astro                 # Página principal
 │   │   └── services/
-│   │       └── api.ts          # Llamadas al backend
+│   │   │   ├── errors.ts                   # Manejo de errores
+│   │   │   ├── useToast.ts                 # Modal de notificaciones
+│   │       └── api.ts                      # Llamadas al backend
 │   ├── astro.config.mjs
 │   ├── .env.example
-│   ├── Dockerfile              # Configuración docker frontend
+│   ├── Dockerfile                          # Configuración docker frontend
 │   └── package.json
 │
 ├── .gitignore
-├── docker-compose.yml
+├── docker-compose.yml                      # Configuración Docker Compose
 ├── LICENSE
 └── README.md
 ```
