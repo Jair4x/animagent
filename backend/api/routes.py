@@ -3,6 +3,9 @@ from pydantic import BaseModel
 from agent.graph import build_graph
 from models.factory import get_llm
 from fastapi import HTTPException
+from query_logging.query_logger import log_query
+import time
+import config
 import index_store
 
 ERROR_PATTERNS = [
@@ -50,6 +53,7 @@ async def chat(
     ### Returns
     Agent response and source document.
     """
+    start = time.time()
     try:
         llm         = get_llm(
                     provider=body.provider,
@@ -82,6 +86,15 @@ async def chat(
         if isinstance(response, list):
             response = messages[-1].text
 
+        log_query(
+            query=body.query,
+            response=response,
+            source=source,
+            provider=body.provider or config.DEFAULT_PROVIDER,
+            duration=time.time() - start,
+        )
+
         return ChatResponse(response=response, source=source)
     except Exception as err:
+        print(err)
         raise handle_llm_error(err)
