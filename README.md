@@ -362,8 +362,7 @@ python -m pytest tests/integration/ -v
 - Mejoras de UI: animaciones, estados de carga, manejo de errores visible
 - Soporte para modelos adicionales (OpenAI, Cohere)
 
-### ⌛｜Versión 1.2 - Operaciones
+### ✅｜Versión 1.2 - Operaciones
 
 - Hot reload del índice FAISS al haber cambios
-- Logging de consultas con feedback
-- Endpoint de administración para subir documentos sin acceso al servidor
+- Logging de consultas para análisis de uso
